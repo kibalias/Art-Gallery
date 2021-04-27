@@ -66,4 +66,5 @@ public class ArtworksValues {
 	public Float getArtPrice() {
 		return art_price;
 	}
+	
 }
