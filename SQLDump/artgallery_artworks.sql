@@ -25,7 +25,7 @@ DROP TABLE IF EXISTS `artworks`;
 CREATE TABLE `artworks` (
   `ArtCode` char(5) NOT NULL,
   `ArtTitle` char(30) NOT NULL,
-  `ArtStyle` char(10) DEFAULT NULL,
+  `ArtStyle` char(15) DEFAULT NULL,
   `YearOfMaking` char(4) NOT NULL,
   `Artist` char(50) NOT NULL,
   `ArtPrice` float NOT NULL,
@@ -40,7 +40,7 @@ CREATE TABLE `artworks` (
 
 LOCK TABLES `artworks` WRITE;
 /*!40000 ALTER TABLE `artworks` DISABLE KEYS */;
-INSERT INTO `artworks` VALUES ('A0001','Flight','Abstract','2020','Niko C',15000,'Sold'),('A0002','Mona Lisa','Realism','1503','Leonardo da Vinci',1999990,'Unsold'),('A0004','Yeehaaaw','Lol','1990','Uknown',12347,'Unsold'),('A0005','sample','sample','2020','Leo',100,'Sold');
+INSERT INTO `artworks` VALUES ('A0001','Flight','Abstract','2020','Niko C',15000,'Sold'),('A0002','Mona Lisa','Realism','1503','Leonardo da Vinci',1999990,'Unsold'),('A0004','Yeehaaaw','Lol','1990','Uknown',12347,'Unsold'),('A0005','sample','sample','2020','Leo',100,'Sold'),('A0006','Sample01','Abstract','2000','Anon',15093,'Unsold'),('A0007','Leopard','Realism','2020','Leonard Leo',1235.28,'Unsold'),('A0008','Eleonor','Semireal','1990','Eleanor Rugby',19870,'Unsold');
 /*!40000 ALTER TABLE `artworks` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-04-27 16:32:33
+-- Dump completed on 2021-04-28  2:44:06
