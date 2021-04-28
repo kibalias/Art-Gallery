@@ -350,7 +350,7 @@ public class Artist extends JFrame {
 				String toDelete = tableModel.getValueAt(rowIndex, 0).toString();
 				
 				artistCRUD.Delete(toDelete);
-				Buyer frame = new Buyer();
+				Artist frame = new Artist();
 				frame.setVisible(true);
 				}
 				
