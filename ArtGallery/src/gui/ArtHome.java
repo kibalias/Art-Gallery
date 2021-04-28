@@ -60,8 +60,8 @@ public class ArtHome extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				setVisible(false);
-				Main mainFrame = new Main();
-				mainFrame.setVisible(true);
+				Artworks frame = new Artworks();
+				frame.setVisible(true);
 			}
 		});
 		btnAdminNewButton.setBounds(162, 96, 121, 31);
