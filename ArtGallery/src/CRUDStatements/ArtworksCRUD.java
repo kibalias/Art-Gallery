@@ -22,6 +22,29 @@ public class ArtworksCRUD {
 					art_price;
 	 */
 	
+//getByArtCode
+	public ArtworksValues artVal (String ArtCode){
+		ArtworksValues artworks = new ArtworksValues();
+		conn =   DBConnection.getConnection();
+		try {
+			PreparedStatement SlctByStatement = conn.prepareStatement("SELECT * FROM artworks WHERE ArtCode = '" + ArtCode +"'");  
+			ResultSetObject = SlctByStatement.executeQuery();
+			
+			if(ResultSetObject.next()) {
+				artworks.setArtCode(ResultSetObject.getString("ArtCode"));
+				artworks.setArtTitle(ResultSetObject.getString("ArtTitle"));
+				artworks.setArtStyle(ResultSetObject.getString("ArtStyle"));
+				artworks.setYearOfMaking(ResultSetObject.getString("YearOfMaking"));
+				artworks.setArtist(ResultSetObject.getString("Artist"));
+				artworks.setArtPrice(ResultSetObject.getFloat("ArtPrice"));
+				artworks.setArtStatus(ResultSetObject.getString("ArtStatus"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return artworks;
+	}
+	
 //READING 
 	public static ArrayList <ArtworksValues> Read() {
 
@@ -80,26 +103,18 @@ public class ArtworksCRUD {
 	}
 	
 	//UPDATING data 
-	public void Update(ArtworksValues artwork) {
+	public static void Update(ArtworksValues artwork) {
 		conn = DBConnection.getConnection();
-	/*P.S. Not yet done, RECODE 
 		try {
-			PreparedStatement UpdateStatement = conn.prepareStatement("UPDATE artworks SET ArtCode = ?, "
-												+ "ArtTitle = ?, "
-												+ "ArtStyle = ?, "
-												+ "YearOfMaking = ?, "
-												+ "Artist = ? "
-												+ "ArtPrice = ? "
-												+ "ArtStatus = ? "
-												+ "WHERE ArtCode = ?");
+			PreparedStatement UpdateStatement = conn.prepareStatement("UPDATE artworks SET ArtTitle = ?, ArtStyle = ?, YearOfMaking = ?, Artist = ?, ArtPrice = ?, ArtStatus = ? WHERE ArtCode = ?");
 			
-			UpdateStatement.setString(1, artwork.getArtCode());
-			UpdateStatement.setString(2, artwork.getArtTitle());
-			UpdateStatement.setString(3, artwork.getArtStyle());
-			UpdateStatement.setString(4, artwork.getYearOfMaking());
-			UpdateStatement.setString(5, artwork.getArtist());
+			UpdateStatement.setString(7, artwork.getArtCode());
+			UpdateStatement.setString(1, artwork.getArtTitle());
+			UpdateStatement.setString(2, artwork.getArtStyle());
+			UpdateStatement.setString(3, artwork.getYearOfMaking());
+			UpdateStatement.setString(4, artwork.getArtist());
+			UpdateStatement.setFloat(5, artwork.getArtPrice());
 			UpdateStatement.setString(6, artwork.getArtStatus());
-			UpdateStatement.setFloat(7, artwork.getArtPrice());
 			
 			UpdateStatement.execute();
 			
@@ -107,7 +122,6 @@ public class ArtworksCRUD {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		*/
 	}
 	
 	//Deleting a row
