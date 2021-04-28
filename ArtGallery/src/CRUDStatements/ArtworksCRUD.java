@@ -111,7 +111,16 @@ public class ArtworksCRUD {
 	}
 	
 	//Deleting a row
-	public void Delete() {
-		
+	public void Delete(String ArtCode) {
+		conn = DBConnection.getConnection();
+		try {
+			PreparedStatement DeleteStatement = conn.prepareStatement("DELETE FROM `artworks` WHERE `ArtCode` = ?");
+			
+			DeleteStatement.setString(1, ArtCode);
+			DeleteStatement.execute();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 }

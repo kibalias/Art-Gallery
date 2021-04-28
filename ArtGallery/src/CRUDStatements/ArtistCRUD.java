@@ -77,7 +77,16 @@ public class ArtistCRUD {
 	}
 	
 //DELETING a row in the table
-	public void Delete() {
-		
+	public void Delete(String ArtistName) {
+		conn = DBConnection.getConnection();
+		try {
+			PreparedStatement DeleteStatement = conn.prepareStatement("DELETE FROM `artist` WHERE `ArtistName` = ?");
+			
+			DeleteStatement.setString(1, ArtistName);
+			DeleteStatement.execute();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 }
