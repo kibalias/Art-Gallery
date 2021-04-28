@@ -2,7 +2,6 @@ package CRUDStatements;
 
 import connection.DBConnection;
 import value.ArtistValues;
-import value.ArtworksValues;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -20,6 +19,27 @@ public class ArtistCRUD {
 					artist_contactnum;
 	*/
 	
+	
+//getByArtistName
+	public ArtistValues artistVal (String ArtistName){
+		ArtistValues artist = new ArtistValues();
+		conn =   DBConnection.getConnection();
+		try {
+			PreparedStatement SlctByStatement = conn.prepareStatement("SELECT * FROM artist WHERE ArtistName = '" + ArtistName +"'");  
+			ResultSetObject = SlctByStatement.executeQuery();
+				
+			if(ResultSetObject.next()) {
+				artist.setArtistName(ResultSetObject.getString("ArtistName"));
+				artist.setArtistAge(ResultSetObject.getString("ArtistAge"));
+				artist.setArtistGender(ResultSetObject.getString("ArtistGender"));
+				artist.setArtistAddress(ResultSetObject.getString("ArtistAddress"));
+				artist.setArtistContactNumber(ResultSetObject.getString("ArtistContactNumber"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return artist;
+	}
 //READING	
 	public static ArrayList <ArtistValues> Read() {
 		
@@ -54,7 +74,7 @@ public class ArtistCRUD {
 		int tableFill = 0;
 		
 		try {
-			InsStatement = conn.prepareStatement("INSERT into artworks VALUES (?, ?, ?, ?, ?, ?, ?)");
+			InsStatement = conn.prepareStatement("INSERT into artist VALUES (?, ?, ?, ?, ?)");
 			
 			InsStatement.setString(1, artist.getArtistName());
 			InsStatement.setString(2, artist.getArtistAge());
@@ -72,8 +92,27 @@ public class ArtistCRUD {
 	}
 	
 //UPDATING data
-	public void Update() {
-		
+	public static void Update(ArtistValues artist) {
+		conn = DBConnection.getConnection();
+		try {
+			PreparedStatement UpdateStatement = conn.prepareStatement("UPDATE artist SET ArtistAge = ?, "
+																	+ "ArtistGender = ?, "
+																	+ "ArtistAddress = ?, "
+																	+ "ArtistContactNumber = ? "
+																	+ "WHERE ArtistName = ?");
+			
+			UpdateStatement.setString(5, artist.getArtistName());
+			UpdateStatement.setString(1, artist.getArtistAge());
+			UpdateStatement.setString(2, artist.getArtistGender());
+			UpdateStatement.setString(3, artist.getArtistAddress());
+			UpdateStatement.setString(4, artist.getArtistContactNumber());
+			
+			UpdateStatement.execute();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 //DELETING a row in the table
