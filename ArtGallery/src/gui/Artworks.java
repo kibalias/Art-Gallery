@@ -95,11 +95,10 @@ public class Artworks extends JFrame {
 		btnArtist.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				/*
+				
 				setVisible(false);
 				Artist frame = new Artist();
 				frame.setVisible(true);
-				*/
 			}
 		});
 		btnArtist.setFont(new Font("Tahoma", Font.PLAIN, 10));
@@ -111,11 +110,10 @@ public class Artworks extends JFrame {
 		btnBuyer.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				/*
+				
 				setVisible(false);
 				Buyer frame = new Buyer();
-				frame.setVisible(true);
-				*/
+				frame.setVisible(true);	
 			}
 		});
 		btnBuyer.setFont(new Font("Tahoma", Font.PLAIN, 10));
@@ -127,11 +125,11 @@ public class Artworks extends JFrame {
 		btnBuyerCart.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				/*
+				
 				setVisible(false);
 				BuyerCart frame = new BuyerCart();
 				frame.setVisible(true);
-				*/
+				
 			}
 		});
 		btnBuyerCart.setFont(new Font("Tahoma", Font.PLAIN, 10));
@@ -284,10 +282,42 @@ public class Artworks extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
+ArtworksValues artworkEdit = new ArtworksValues();
+				
+				boolean isFilled = !ArtCodetextField.getText().equals("") && !ArtTitletextField.getText().equals("")
+									&& !YearOfMakingtextField.getText().equals("") && !ArtisttextField.getText().equals("")
+									&& !ArtPricetextField.getText().equals(""); //fields that needs to be filled out
+				
+				try {
+					if(isFilled) {
+						
+					//setting the values
+						artworkEdit.setArtCode(ArtCodetextField.getText());
+						artworkEdit.setArtTitle(ArtTitletextField.getText());
+						artworkEdit.setArtStyle(ArtStyletextField.getText());
+						artworkEdit.setYearOfMaking(YearOfMakingtextField.getText());
+						artworkEdit.setArtist(ArtisttextField.getText());
+						artworkEdit.setArtPrice(Float.parseFloat(ArtPricetextField.getText()));
+						artworkEdit.setArtStatus(ArtStatustextField.getText());
+						
+						ArtworksCRUD.Update(artworkEdit);
+						JOptionPane.showMessageDialog(null, "Saved Changes.");
+						setVisible(false);
+						
+						Artworks frame = new Artworks();
+						frame.setVisible(true);
+					} else {
+						JOptionPane.showMessageDialog(null, "Not saved. Input Required Fields.");
+						}
+					} catch (Exception e1) {
+						e1.printStackTrace();
+					}
+				
 			}
 		});
 		btnSave.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
 		btnSave.setBounds(180, 414, 89, 26);
+		btnSave.setVisible(false);
 		panelHolder.add(btnSave);
 		
 //Discard Button
@@ -310,7 +340,23 @@ public class Artworks extends JFrame {
 		btnEdit.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				btnSave.setVisible(true);
+				int rowIndex = Artworkstable.getSelectedRow();
 				
+				if(rowIndex == -1) {
+					JOptionPane.showMessageDialog(
+							null,
+							"Please select an item first.",
+							"Warning",
+							JOptionPane.WARNING_MESSAGE);
+					return;
+				}
+				
+				String toEdit = tableModel.getValueAt(rowIndex, 0).toString();
+				ArtworksValues artworks = artworkCRUD.artVal(toEdit);
+				setTexts(artworks);
+				
+				btnAdd.setVisible(false);
 			}
 		});
 		btnEdit.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
@@ -363,4 +409,15 @@ public class Artworks extends JFrame {
 		btnBackToMenu.setBounds(25, 11, 96, 26);
 		panelHolder.add(btnBackToMenu);
 	}
+	
+	//In editing: SETTING text into TEXTFIELDs
+		public void setTexts(ArtworksValues artworks) {
+			ArtCodetextField.setText(artworks.getArtCode());
+			ArtTitletextField.setText(artworks.getArtTitle());
+			ArtStyletextField.setText(artworks.getArtStyle());
+			YearOfMakingtextField.setText(artworks.getYearOfMaking());
+			ArtisttextField.setText(artworks.getArtist());
+			ArtStatustextField.setText(artworks.getArtStatus());
+			ArtPricetextField.setText(String.valueOf(artworks.getArtPrice()));
+		}
 }
