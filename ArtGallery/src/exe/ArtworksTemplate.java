@@ -30,8 +30,8 @@ public class ArtworksTemplate {
 					artVal.getArtStyle(),
 					artVal.getYearOfMaking(),
 					artVal.getArtist(),
-					artVal.getArtStatus(),
 					artVal.getArtPrice(),
+					artVal.getArtStatus()
 			};
 		table.addRow(list);
 		}
