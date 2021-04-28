@@ -21,6 +21,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import gui.Main;
+import javax.swing.SwingConstants;
 
 public class ArtHome extends JFrame {
 
@@ -46,6 +47,8 @@ public class ArtHome extends JFrame {
 	 * Create the frame.
 	 */
 	public ArtHome() {
+		setForeground(new Color(0, 0, 0));
+		setBackground(new Color(0, 0, 0));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -54,7 +57,8 @@ public class ArtHome extends JFrame {
 		setContentPane(contentPane);
 		
 		JButton btnAdminNewButton = new JButton("Admin");
-		btnAdminNewButton.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		btnAdminNewButton.setBackground(new Color(255, 255, 255));
+		btnAdminNewButton.setFont(new Font("Times New Roman", Font.PLAIN, 18));
 		contentPane.add(btnAdminNewButton);
 		btnAdminNewButton.addMouseListener(new MouseAdapter() {
 			@Override
@@ -67,9 +71,31 @@ public class ArtHome extends JFrame {
 		btnAdminNewButton.setBounds(162, 96, 121, 31);
 		
 		JLabel lblLogInNewLabel = new JLabel("Log-in");
+		lblLogInNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblLogInNewLabel.setBackground(Color.WHITE);
 		lblLogInNewLabel.setFont(new Font("Sylfaen", Font.PLAIN, 17));
-		lblLogInNewLabel.setBounds(200, 72, 61, 23);
+		lblLogInNewLabel.setBounds(192, 72, 61, 23);
 		contentPane.add(lblLogInNewLabel);
+		
+		JLabel lblAppName = new JLabel("Art Galleria");
+		lblAppName.setForeground(new Color(102, 0, 0));
+		lblAppName.setFont(new Font("Bookman Old Style", Font.BOLD, 30));
+		lblAppName.setHorizontalAlignment(SwingConstants.CENTER);
+		lblAppName.setBounds(90, 11, 278, 50);
+		contentPane.add(lblAppName);
+		
+		JButton btnViewer = new JButton("Viewer");
+		btnViewer.setFont(new Font("Times New Roman", Font.PLAIN, 18));
+		btnViewer.setBackground(Color.WHITE);
+		btnViewer.setBounds(162, 138, 121, 31);
+		contentPane.add(btnViewer);
+		btnViewer.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				setVisible(false);
+				Viewer frame = new Viewer();
+				frame.setVisible(true);
+			}
+		});
 	}
 }
