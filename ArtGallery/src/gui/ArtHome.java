@@ -75,7 +75,7 @@ public class ArtHome extends JFrame {
 		contentPane.add(lblLogInNewLabel);
 		
 		JButton btnAdminNewButton = new JButton("Admin");
-		btnAdminNewButton.setBounds(162, 121, 105, 29);
+		btnAdminNewButton.setBounds(162, 161, 105, 29);
 		btnAdminNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -90,7 +90,7 @@ public class ArtHome extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnViewer.setBounds(162, 160, 105, 29);
+		btnViewer.setBounds(162, 121, 105, 29);
 		btnViewer.setForeground(new Color(102, 0, 0));
 		btnViewer.setFont(new Font("Times New Roman", Font.PLAIN, 18));
 		btnViewer.setBackground(Color.WHITE);
@@ -107,7 +107,7 @@ public class ArtHome extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				setVisible(false);
-				Artworks frame = new Artworks();
+				AdminLogIn frame = new AdminLogIn();
 				frame.setVisible(true);
 			}
 		});
