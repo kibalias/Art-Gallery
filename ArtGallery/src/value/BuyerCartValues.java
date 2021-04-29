@@ -6,6 +6,15 @@ public class BuyerCartValues {
 	private String 	art_code,
 					buyer_id;
 	private Float 	amount;
+	private Integer id;
+	
+	public void setId(Integer cartID) {
+		id = cartID;
+	}
+	
+	public Integer getId() {
+		return id;
+	}
 	
 	public String getArtCode() {
 		return art_code;
