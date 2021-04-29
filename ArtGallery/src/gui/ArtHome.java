@@ -109,6 +109,7 @@ public class ArtHome extends JFrame {
 				setVisible(false);
 				AdminLogIn frame = new AdminLogIn();
 				frame.setVisible(true);
+				
 			}
 		});
 	}
