@@ -224,7 +224,6 @@ public class Artworks extends JFrame {
 		panel_1.setLayout(new BorderLayout(0, 0));
 		
 		Artworkstable = new JTable();
-		Artworkstable.setFont(new Font("Constantia", Font.PLAIN, 12));
 		Artworkstable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		Artworkstable.setBackground(Color.WHITE);
 		Artworkstable.setBorder(new LineBorder(new Color(0, 0, 0)));
