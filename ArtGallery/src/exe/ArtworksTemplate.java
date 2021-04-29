@@ -36,4 +36,20 @@ public class ArtworksTemplate {
 		table.addRow(list);
 		}
 	}
+	
+	public static void readViewerData (DefaultTableModel table) {
+		ArrayList <ArtworksValues> artworks = ArtworksCRUD.Read();
+		for (ArtworksValues artVal : artworks) {
+			Object list[] = {
+					artVal.getArtTitle(),
+					artVal.getArtStyle(),
+					artVal.getYearOfMaking(),
+					artVal.getArtist(),
+					artVal.getArtPrice(),
+					artVal.getArtStatus()
+			};
+		table.addRow(list);
+		}
+		
+	}
 }

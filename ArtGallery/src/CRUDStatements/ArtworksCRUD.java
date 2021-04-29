@@ -44,6 +44,27 @@ public class ArtworksCRUD {
 		}
 		return artworks;
 	}
+//getByArtTitle	
+	public ArtworksValues getArtbyTitle (String ArtTitle){
+		ArtworksValues artworks = new ArtworksValues();
+		conn =   DBConnection.getConnection();
+		try {
+			PreparedStatement SlctByStatement = conn.prepareStatement("SELECT * FROM artworks WHERE ArtTitle = '" + ArtTitle +"'");  
+			ResultSetObject = SlctByStatement.executeQuery();
+			
+			if(ResultSetObject.next()) {
+				artworks.setArtTitle(ResultSetObject.getString("ArtTitle"));
+				artworks.setArtStyle(ResultSetObject.getString("ArtStyle"));
+				artworks.setYearOfMaking(ResultSetObject.getString("YearOfMaking"));
+				artworks.setArtist(ResultSetObject.getString("Artist"));
+				artworks.setArtPrice(ResultSetObject.getFloat("ArtPrice"));
+				artworks.setArtStatus(ResultSetObject.getString("ArtStatus"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return artworks;
+	}
 	
 //READING 
 	public static ArrayList <ArtworksValues> Read() {
