@@ -27,6 +27,9 @@ import javax.swing.border.LineBorder;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.SystemColor;
+import javax.swing.UIManager;
+import javax.swing.border.MatteBorder;
+import javax.swing.border.BevelBorder;
 
 public class Artworks extends JFrame {
 
@@ -40,7 +43,8 @@ public class Artworks extends JFrame {
 	private JTextField ArtPricetextField;
 	private JTable Artworkstable;
 	
-	ArtworksCRUD artworkCRUD = new ArtworksCRUD();
+	protected ArtworksCRUD artworkCRUD = new ArtworksCRUD();
+	protected ArtworksTemplate temp;
 	/**
 	 * Launch the application.
 	 */
@@ -92,6 +96,7 @@ public class Artworks extends JFrame {
 		
 //Button to redirect to Artist GUI	
 		JButton btnArtist = new JButton("Artist");
+		btnArtist.setBackground(new Color(192, 192, 192));
 		btnArtist.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -107,6 +112,7 @@ public class Artworks extends JFrame {
 		
 //Button to redirect to Buyer GUI
 		JButton btnBuyer = new JButton("Buyer");
+		btnBuyer.setBackground(new Color(192, 192, 192));
 		btnBuyer.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -122,6 +128,7 @@ public class Artworks extends JFrame {
 		
 //Button to redirect to Buyer Cart GUI
 		JButton btnBuyerCart = new JButton("Buyer Cart");
+		btnBuyerCart.setBackground(new Color(192, 192, 192));
 		btnBuyerCart.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -224,9 +231,10 @@ public class Artworks extends JFrame {
 		panel_1.setLayout(new BorderLayout(0, 0));
 		
 		Artworkstable = new JTable();
+		Artworkstable.setFont(new Font("Sitka Text", Font.PLAIN, 12));
 		Artworkstable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		Artworkstable.setBackground(Color.WHITE);
-		Artworkstable.setBorder(new LineBorder(new Color(0, 0, 0)));
+		Artworkstable.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		panel_1.add(Artworkstable);
 		
 		//Display data in table
@@ -239,6 +247,8 @@ public class Artworks extends JFrame {
 
 //Add Button
 		JButton btnAdd = new JButton("Add");
+		btnAdd.setBackground(new Color(245, 245, 245));
+		btnAdd.setForeground(new Color(128, 0, 0));
 		btnAdd.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -261,9 +271,8 @@ public class Artworks extends JFrame {
 						artworks.setArtPrice(Float.parseFloat(ArtPricetextField.getText()));
 						
 						JOptionPane.showMessageDialog(null, ArtworksTemplate.rowCheck(artworks));
-						setVisible(false);
-						Artworks frame = new Artworks();
-						frame.setVisible(true);
+						tableModel.setRowCount(1);
+						temp.readData(tableModel);
 					} else {
 						JOptionPane.showMessageDialog(null, "Not saved. Input Required Fields.");
 						}
@@ -278,6 +287,8 @@ public class Artworks extends JFrame {
 		
 //Save Button
 		JButton btnSave = new JButton("Save");
+		btnSave.setBackground(new Color(245, 245, 245));
+		btnSave.setForeground(new Color(128, 0, 0));
 		btnSave.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -301,11 +312,12 @@ ArtworksValues artworkEdit = new ArtworksValues();
 						artworkEdit.setArtStatus(ArtStatustextField.getText());
 						
 						ArtworksCRUD.Update(artworkEdit);
+						clear();
 						JOptionPane.showMessageDialog(null, "Saved Changes.");
-						setVisible(false);
-						
-						Artworks frame = new Artworks();
-						frame.setVisible(true);
+						tableModel.setRowCount(1);
+						temp.readData(tableModel);
+						btnAdd.setVisible(true);
+						btnSave.setVisible(false);
 					} else {
 						JOptionPane.showMessageDialog(null, "Not saved. Input Required Fields.");
 						}
@@ -322,13 +334,15 @@ ArtworksValues artworkEdit = new ArtworksValues();
 		
 //Discard Button
 		JButton btnDiscard = new JButton("Discard");
+		btnDiscard.setBackground(new Color(245, 245, 245));
+		btnDiscard.setForeground(new Color(128, 0, 0));
 		btnDiscard.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				setVisible(false);
+				clear();
 				JOptionPane.showMessageDialog(null, "Sucessfully Discarded Changes.");
-				Artworks frame = new Artworks();
-				frame.setVisible(true);
+				btnAdd.setVisible(true);
+				btnSave.setVisible(false);
 			}
 		});
 		btnDiscard.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
@@ -337,6 +351,8 @@ ArtworksValues artworkEdit = new ArtworksValues();
 		
 //Edit Button
 		JButton btnEdit = new JButton("Edit");
+		btnEdit.setBackground(new Color(245, 245, 245));
+		btnEdit.setForeground(new Color(128, 0, 0));
 		btnEdit.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -365,6 +381,8 @@ ArtworksValues artworkEdit = new ArtworksValues();
 		
 //Delete Button
 		JButton btnDelete = new JButton("Delete");
+		btnDelete.setBackground(new Color(245, 245, 245));
+		btnDelete.setForeground(new Color(128, 0, 0));
 		btnDelete.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -384,8 +402,11 @@ ArtworksValues artworkEdit = new ArtworksValues();
 				String toDelete = tableModel.getValueAt(rowIndex, 0).toString();
 				
 				artworkCRUD.Delete(toDelete);
-				Artworks frame = new Artworks();
-				frame.setVisible(true);
+				
+				tableModel.setRowCount(1);
+				temp.readData(tableModel);
+				
+				
 				}
 				
 			}
@@ -408,6 +429,17 @@ ArtworksValues artworkEdit = new ArtworksValues();
 		btnBackToMenu.setFont(new Font("Trebuchet MS", Font.PLAIN, 9));
 		btnBackToMenu.setBounds(25, 11, 96, 26);
 		panelHolder.add(btnBackToMenu);
+	}
+	
+private void clear() {
+		
+	ArtCodetextField.setText("");
+	ArtTitletextField.setText("");
+	ArtStyletextField.setText("");
+	YearOfMakingtextField.setText("");
+	ArtisttextField.setText("");
+	ArtStatustextField.setText("");
+	ArtPricetextField.setText("");
 	}
 	
 	//In editing: SETTING text into TEXTFIELDs
