@@ -22,9 +22,15 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.SwingConstants;
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
+
 import java.awt.GridBagLayout;
+import java.awt.Image;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import javax.swing.border.LineBorder;
+import javax.swing.JSeparator;
+import javax.swing.border.BevelBorder;
 
 public class ArtHome extends JFrame {
 
@@ -56,26 +62,19 @@ public class ArtHome extends JFrame {
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(204, 204, 204));
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblAppName = new JLabel("Art Galleria");
-		lblAppName.setBounds(131, 40, 179, 36);
-		lblAppName.setForeground(new Color(102, 0, 0));
-		lblAppName.setFont(new Font("Bookman Old Style", Font.BOLD, 30));
-		lblAppName.setHorizontalAlignment(SwingConstants.CENTER);
-		contentPane.add(lblAppName);
-		
-		JLabel lblLogInNewLabel = new JLabel("Log-in");
-		lblLogInNewLabel.setBounds(192, 87, 47, 23);
+		JLabel lblLogInNewLabel = new JLabel("Log In");
+		lblLogInNewLabel.setBounds(306, 70, 47, 23);
 		lblLogInNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblLogInNewLabel.setBackground(Color.WHITE);
-		lblLogInNewLabel.setFont(new Font("Sylfaen", Font.PLAIN, 17));
+		lblLogInNewLabel.setFont(new Font("Arial", Font.PLAIN, 17));
 		contentPane.add(lblLogInNewLabel);
 		
 		JButton btnAdminNewButton = new JButton("Admin");
-		btnAdminNewButton.setBounds(162, 161, 105, 29);
+		btnAdminNewButton.setBounds(282, 144, 105, 29);
 		btnAdminNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -90,11 +89,35 @@ public class ArtHome extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnViewer.setBounds(162, 121, 105, 29);
+		btnViewer.setBounds(282, 104, 105, 29);
 		btnViewer.setForeground(new Color(102, 0, 0));
 		btnViewer.setFont(new Font("Times New Roman", Font.PLAIN, 18));
 		btnViewer.setBackground(Color.WHITE);
 		contentPane.add(btnViewer);
+		
+		JPanel Imgpanel = new JPanel();
+		Imgpanel.setBackground(Color.WHITE);
+		Imgpanel.setBorder(new LineBorder(new Color(128, 0, 0)));
+		Imgpanel.setBounds(32, 37, 165, 185);
+		contentPane.add(Imgpanel);
+		Imgpanel.setLayout(null);
+		
+		JLabel lblImage = new JLabel("");
+		Image logo = new ImageIcon(getClass().getResource("./AG120x170.png")).getImage();
+		lblImage.setIcon(new ImageIcon(logo));
+		/*ImageIcon logo = createImageIcon("/ArtGalleria200x300px.png");
+		lblImage.setIcon(logo);*/
+		lblImage.setBounds(18, 11, 129, 163);
+		Imgpanel.add(lblImage);
+		
+		JSeparator separator = new JSeparator();
+		separator.setBackground(new Color(128, 0, 0));
+		separator.setForeground(new Color(128, 0, 0));
+		separator.setOrientation(SwingConstants.VERTICAL);
+		separator.setBounds(234, 11, 30, 239);
+		contentPane.add(separator);
+		
+		
 		btnViewer.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
