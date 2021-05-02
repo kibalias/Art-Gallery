@@ -25,8 +25,6 @@ import exe.ArtworksTemplate;
 import value.ArtworksValues;
 import CRUDStatements.ArtworksCRUD;
 import java.awt.SystemColor;
-import javax.swing.border.SoftBevelBorder;
-import javax.swing.border.BevelBorder;
 
 public class Viewer extends JFrame {
 
@@ -84,6 +82,38 @@ public class Viewer extends JFrame {
 		txtFldTitle.setBounds(77, 49, 131, 23);
 		txtFldTitle.setColumns(10);
 		searchPanel.add(txtFldTitle);
+//Search Button 	
+		JButton btnSearch = new JButton("Search");
+		btnSearch.setBackground(new Color(255, 255, 255));
+		btnSearch.setBounds(128, 82, 80, 23);
+		searchPanel.add(btnSearch);
+		
+		btnSearch.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				ArtworksValues artworks = new ArtworksValues();
+				
+				boolean isFilled = !txtFldTitle.getText().equals(""); //fields that needs to be filled out
+				
+				try {
+					if(isFilled) {
+						
+					//setting the values
+						
+						
+						JOptionPane.showMessageDialog(null, ArtworksTemplate.rowCheck(artworks));
+						setVisible(false);
+						Viewer frame = new Viewer();
+						frame.setVisible(true);
+					} else {
+						JOptionPane.showMessageDialog(null, "Please Enter an Art Title");
+						}
+					} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
+		
 		
 		JPanel panel = new JPanel();
 		panel.setBounds(287, 83, 378, 291);
@@ -91,7 +121,6 @@ public class Viewer extends JFrame {
 		panel.setLayout(null);
 		
 		table = new JTable();
-		table.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
 			},
@@ -101,10 +130,9 @@ public class Viewer extends JFrame {
 		));
 		table.getColumnModel().getColumn(2).setPreferredWidth(83);
 		table.getColumnModel().getColumn(3).setPreferredWidth(86);
-		table.setFont(new Font("Arial", Font.PLAIN, 12));
+		table.setFont(new Font("Constantia", Font.PLAIN, 12));
 		table.setBounds(0, 0, 378, 291);
 		panel.add(table);
-		
 		//Display table data for viewers
 		String[] columnNames = {"Art Title", "ArtStyle", "Year of Making", "Artist", "Price", "Status"};
 		DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
@@ -118,53 +146,6 @@ public class Viewer extends JFrame {
 		btnReturn.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		btnReturn.setBounds(30, 26, 102, 23);
 		contentPane.add(btnReturn);
-		
-		JButton btnRefresh = new JButton("Refresh");
-		btnRefresh.setBackground(Color.WHITE);
-		btnRefresh.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		btnRefresh.setBounds(576, 56, 89, 23);
-		contentPane.add(btnRefresh);
-		
-		//Search Button 	
-				JButton btnSearch = new JButton("Search");
-				btnSearch.setBackground(new Color(255, 255, 255));
-				btnSearch.setBounds(128, 82, 80, 23);
-				searchPanel.add(btnSearch);
-				
-				btnSearch.addMouseListener(new MouseAdapter() {
-					@Override
-					public void mouseClicked(MouseEvent e) {
-						
-						boolean isFilled = !txtFldTitle.getText().equals(""); //fields that needs to be filled out
-						
-						try {
-							if(isFilled) {
-	
-								String artTitle = txtFldTitle.getText();  //getSearched String
-								tableModel.setRowCount(1);				
-								ArtworksTemplate.searchResult(tableModel, artTitle);
-								
-								
-								
-								
-							} else {
-								JOptionPane.showMessageDialog(null, "Please Enter an Art Title");
-								}
-							} catch (Exception e1) {
-							e1.printStackTrace();
-						}
-					}
-				});
-				
-				
-		btnRefresh.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				tableModel.setRowCount(1);
-				ArtworksTemplate.readViewerData(tableModel);
-				txtFldTitle.setText(" ");
-			}
-		});
 		
 		btnReturn.addMouseListener(new MouseAdapter() {
 			@Override

@@ -231,7 +231,7 @@ public class Artworks extends JFrame {
 		panel_1.setLayout(new BorderLayout(0, 0));
 		
 		Artworkstable = new JTable();
-		Artworkstable.setFont(new Font("Arial", Font.PLAIN, 12));
+		Artworkstable.setFont(new Font("Sitka Text", Font.PLAIN, 12));
 		Artworkstable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		Artworkstable.setBackground(Color.WHITE);
 		Artworkstable.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));

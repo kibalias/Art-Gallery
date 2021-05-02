@@ -9,7 +9,7 @@ public class DBConnection {
 	public static Connection  getConnection() {
 		Connection conn = null;
 	    try {
-	     conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbartgallery","admin","admin"); 
+	     conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbartgallery","(username)","(password)"); 
 		 System.out.println("Connected With the database successfully");
 		 
 		 } catch (SQLException e) {

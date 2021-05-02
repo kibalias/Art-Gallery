@@ -106,7 +106,7 @@ public class AdminLogIn extends JFrame {
 				String password = String.valueOf(passwordField.getPassword());
 				
 				try {
-					if(username.equals("AdminGalleria") && password.equals("admin")) {
+					if(username.equals("AdminGalleria") && password.equals("amTheNextDaVinci2k21")) {
 						setVisible(false);
 						Artworks frame = new Artworks();
 						frame.setVisible(true);
