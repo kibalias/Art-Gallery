@@ -53,4 +53,23 @@ public class ArtworksTemplate {
 
 	}
 	
+	public static void searchResult (DefaultTableModel table, String artTitle) {
+		ArrayList <ArtworksValues> artworks = ArtworksCRUD.Search(artTitle);
+		
+		for (ArtworksValues artVal : artworks) {
+			Object list[] = {
+					artVal.getArtTitle(),
+					artVal.getArtStyle(),
+					artVal.getYearOfMaking(),
+					artVal.getArtist(),
+					artVal.getArtPrice(),
+					artVal.getArtStatus()
+			};
+			
+		table.addRow(list);
+		}
+	}
+	
+	
+	
 }

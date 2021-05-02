@@ -5,6 +5,8 @@ import connection.DBConnection;
 import java.sql.*;
 import java.util.ArrayList;
 
+import javax.swing.table.DefaultTableModel;
+
 import value.ArtworksValues;
 
 public class ArtworksCRUD {
@@ -136,5 +138,34 @@ public class ArtworksCRUD {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public static ArrayList <ArtworksValues> Search(String ArtTitle) {
+		
+		ArrayList<ArtworksValues> artList = new ArrayList<ArtworksValues>();
+		conn = DBConnection.getConnection();
+		try {
+			PreparedStatement stmtSearch = conn.prepareStatement("SELECT * FROM artworks WHERE ArtTitle = ? ");
+			
+				stmtSearch.setString(1, ArtTitle);
+				ResultSet rs = stmtSearch.executeQuery();
+				
+				while(rs.next()) {
+					ArtworksValues artworks = new ArtworksValues();
+					artworks.setArtCode(rs.getString("ArtCode"));
+					artworks.setArtTitle(rs.getString("ArtTitle"));
+					artworks.setArtStyle(rs.getString("ArtStyle"));
+					artworks.setYearOfMaking(rs.getString("YearOfMaking"));
+					artworks.setArtist(rs.getString("Artist"));
+					artworks.setArtPrice(rs.getFloat("ArtPrice"));
+					artworks.setArtStatus(rs.getString("ArtStatus"));
+					
+					artList.add(artworks);
+				//	System.out.println("Query: Found "+ rs.getString("ArtCode"));
+				}			
+		}catch (SQLException e) {
+				e.printStackTrace();
+			}
+		return artList;		
 	}
 }
