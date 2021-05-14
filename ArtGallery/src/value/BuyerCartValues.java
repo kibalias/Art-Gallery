@@ -32,11 +32,11 @@ public class BuyerCartValues {
 		return buyer_id;
 	}
 	
-	public void setAmount(Float ProdAmount) {
+/*	public void setAmount(Float ProdAmount) {
 		amount = ProdAmount;
 	}
 	public Float getAmount() {
 		return amount;
 	}
-	
+*/	
 }

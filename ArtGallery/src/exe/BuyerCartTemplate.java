@@ -21,7 +21,7 @@ public class BuyerCartTemplate {
 			}		
 		}
 			
-			////returns the list of values into the table
+		//returns the list of values into the table
 		public static void readData (DefaultTableModel table) {
 			ArrayList <BuyerCartValues> buyer_cart = BuyerCartCRUD.Read();
 				
@@ -30,7 +30,6 @@ public class BuyerCartTemplate {
 						buyerCartVal.getId(),
 						buyerCartVal.getArtCode(),
 						buyerCartVal.getBuyerId(),
-						buyerCartVal.getAmount()
 				};
 			table.addRow(list);
 			}

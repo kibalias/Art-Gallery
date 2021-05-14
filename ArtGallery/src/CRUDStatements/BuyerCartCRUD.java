@@ -36,7 +36,6 @@ public class BuyerCartCRUD {
 					buyercart.setId(ResultSetObject.getInt("id"));
 					buyercart.setArtCode(ResultSetObject.getString("ArtCode"));
 					buyercart.setBuyerId(ResultSetObject.getString("BuyerID"));
-					buyercart.setAmount(ResultSetObject.getFloat("Amount"));
 					
 					cartList.add(buyercart);
 				}
@@ -54,11 +53,10 @@ public class BuyerCartCRUD {
 			int tableFill = 0;
 			
 			try {
-				InsStatement = conn.prepareStatement("INSERT into prodcart VALUES (null, ?, ?, ?)");
+				InsStatement = conn.prepareStatement("INSERT into prodcart VALUES (null, ?, ?)");
 				
 				InsStatement.setString(1, cart.getArtCode());
 				InsStatement.setString(2, cart.getBuyerId());
-				InsStatement.setFloat(3, cart.getAmount());
 				
 				tableFill = InsStatement.executeUpdate();
 				
@@ -94,7 +92,7 @@ public class BuyerCartCRUD {
 			}
 		}
 		
-	//getAmount
+/*	//getAmount
 		public static Float getAmount (String ArtCode) {
 			conn =   DBConnection.getConnection();
 		
@@ -112,7 +110,7 @@ public class BuyerCartCRUD {
 			}
 			return amount;
 		}
-		
+*/	
 	//Retrieve ART CODE for Combo Box
 		public static void ArtCodeComboBox(JComboBox combobox) {
 			conn =   DBConnection.getConnection();

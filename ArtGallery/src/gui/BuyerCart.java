@@ -167,7 +167,7 @@ public class BuyerCart extends JFrame {
 		panel_1.add(Carttable);
 		
 		//Display data in table
-		String[] columnNames = {"id", "Art Code", "Buyer ID", "Amount"};
+		String[] columnNames = {"id", "Art Code", "Buyer ID"};
 		DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
 		tableModel.addRow(columnNames);
 		BuyerCartTemplate.readData(tableModel);
@@ -191,7 +191,7 @@ public class BuyerCart extends JFrame {
 					//setting the values
 						cart.setArtCode(art_code);
 						cart.setBuyerId(buyer_id);
-						cart.setAmount(BuyerCartCRUD.getAmount(art_code));
+					//	cart.setAmount(BuyerCartCRUD.getAmount(art_code));
 						
 						JOptionPane.showMessageDialog(null, BuyerCartTemplate.rowCheck(cart));
 						setVisible(false);
