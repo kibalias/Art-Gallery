@@ -7,7 +7,7 @@ public class ArtworksValues {
 					art_title,
 					art_style,
 					year_of_making,
-					artist,
+					artist_id,
 					art_status;
 	private Float 	art_price;
 	
@@ -43,12 +43,12 @@ public class ArtworksValues {
 		return year_of_making;
 	}
 	
-	public void setArtist(String paramArtist) {
-		artist = paramArtist;
+	public void setArtistID(String ArtistID) {
+		artist_id = ArtistID;
 	}
 	
-	public String getArtist() {
-		return artist;
+	public String getArtistID() {
+		return artist_id;
 	}
 	
 	public void setArtStatus(String ArtStatus) {

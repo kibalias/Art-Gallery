@@ -19,7 +19,7 @@ public class ArtworksCRUD {
 					art_title,
 					art_style,
 					year_of_making,
-					artist,
+					artist_id,
 					art_status;
 					art_price;
 	 */
@@ -37,7 +37,7 @@ public class ArtworksCRUD {
 				artworks.setArtTitle(ResultSetObject.getString("ArtTitle"));
 				artworks.setArtStyle(ResultSetObject.getString("ArtStyle"));
 				artworks.setYearOfMaking(ResultSetObject.getString("YearOfMaking"));
-				artworks.setArtist(ResultSetObject.getString("Artist"));
+				artworks.setArtistID(ResultSetObject.getString("ArtistID"));
 				artworks.setArtPrice(ResultSetObject.getFloat("ArtPrice"));
 				artworks.setArtStatus(ResultSetObject.getString("ArtStatus"));
 			}
@@ -63,7 +63,7 @@ public class ArtworksCRUD {
 				artworks.setArtTitle(ResultSetObject.getString("ArtTitle"));
 				artworks.setArtStyle(ResultSetObject.getString("ArtStyle"));
 				artworks.setYearOfMaking(ResultSetObject.getString("YearOfMaking"));
-				artworks.setArtist(ResultSetObject.getString("Artist"));
+				artworks.setArtistID(ResultSetObject.getString("ArtistID"));
 				artworks.setArtPrice(ResultSetObject.getFloat("ArtPrice"));
 				artworks.setArtStatus(ResultSetObject.getString("ArtStatus"));
 				
@@ -90,7 +90,7 @@ public class ArtworksCRUD {
 			InsStatement.setString(2, artwork.getArtTitle());
 			InsStatement.setString(3, artwork.getArtStyle());
 			InsStatement.setString(4, artwork.getYearOfMaking());
-			InsStatement.setString(5, artwork.getArtist());
+			InsStatement.setString(5, artwork.getArtistID());
 			InsStatement.setFloat(6, artwork.getArtPrice());
 			InsStatement.setString(7, artwork.getArtStatus());
 			
@@ -108,13 +108,13 @@ public class ArtworksCRUD {
 	public static void Update(ArtworksValues artwork) {
 		conn = DBConnection.getConnection();
 		try {
-			PreparedStatement UpdateStatement = conn.prepareStatement("UPDATE artworks SET ArtTitle = ?, ArtStyle = ?, YearOfMaking = ?, Artist = ?, ArtPrice = ?, ArtStatus = ? WHERE ArtCode = ?");
+			PreparedStatement UpdateStatement = conn.prepareStatement("UPDATE artworks SET ArtTitle = ?, ArtStyle = ?, YearOfMaking = ?, ArtistID = ?, ArtPrice = ?, ArtStatus = ? WHERE ArtCode = ?");
 			
 			UpdateStatement.setString(7, artwork.getArtCode());
 			UpdateStatement.setString(1, artwork.getArtTitle());
 			UpdateStatement.setString(2, artwork.getArtStyle());
 			UpdateStatement.setString(3, artwork.getYearOfMaking());
-			UpdateStatement.setString(4, artwork.getArtist());
+			UpdateStatement.setString(4, artwork.getArtistID());
 			UpdateStatement.setFloat(5, artwork.getArtPrice());
 			UpdateStatement.setString(6, artwork.getArtStatus());
 			
@@ -156,7 +156,7 @@ public class ArtworksCRUD {
 					artworks.setArtTitle(rs.getString("ArtTitle"));
 					artworks.setArtStyle(rs.getString("ArtStyle"));
 					artworks.setYearOfMaking(rs.getString("YearOfMaking"));
-					artworks.setArtist(rs.getString("Artist"));
+					artworks.setArtistID(rs.getString("ArtistID"));
 					artworks.setArtPrice(rs.getFloat("ArtPrice"));
 					artworks.setArtStatus(rs.getString("ArtStatus"));
 					

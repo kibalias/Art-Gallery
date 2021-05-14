@@ -187,7 +187,7 @@ public class Artworks extends JFrame {
 		YearOfMakingtextField.setBounds(145, 141, 185, 25);
 		panel.add(YearOfMakingtextField);
 		
-		JLabel lblArtist = new JLabel("Artist");
+		JLabel lblArtist = new JLabel("Artist ID");
 		lblArtist.setFont(new Font("Trebuchet MS", Font.PLAIN, 14));
 		lblArtist.setBounds(27, 179, 92, 31);
 		panel.add(lblArtist);
@@ -266,7 +266,7 @@ public class Artworks extends JFrame {
 						artworks.setArtTitle(ArtTitletextField.getText());
 						artworks.setArtStyle(ArtStyletextField.getText());
 						artworks.setYearOfMaking(YearOfMakingtextField.getText());
-						artworks.setArtist(ArtisttextField.getText());
+						artworks.setArtistID(ArtisttextField.getText());
 						artworks.setArtStatus(ArtStatustextField.getText());
 						artworks.setArtPrice(Float.parseFloat(ArtPricetextField.getText()));
 						
@@ -307,7 +307,7 @@ ArtworksValues artworkEdit = new ArtworksValues();
 						artworkEdit.setArtTitle(ArtTitletextField.getText());
 						artworkEdit.setArtStyle(ArtStyletextField.getText());
 						artworkEdit.setYearOfMaking(YearOfMakingtextField.getText());
-						artworkEdit.setArtist(ArtisttextField.getText());
+						artworkEdit.setArtistID(ArtisttextField.getText());
 						artworkEdit.setArtPrice(Float.parseFloat(ArtPricetextField.getText()));
 						artworkEdit.setArtStatus(ArtStatustextField.getText());
 						
@@ -448,7 +448,7 @@ private void clear() {
 			ArtTitletextField.setText(artworks.getArtTitle());
 			ArtStyletextField.setText(artworks.getArtStyle());
 			YearOfMakingtextField.setText(artworks.getYearOfMaking());
-			ArtisttextField.setText(artworks.getArtist());
+			ArtisttextField.setText(artworks.getArtistID());
 			ArtStatustextField.setText(artworks.getArtStatus());
 			ArtPricetextField.setText(String.valueOf(artworks.getArtPrice()));
 		}
