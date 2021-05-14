@@ -27,6 +27,7 @@ import value.ArtistValues;
 public class Artist extends JFrame {
 
 	private JPanel contentPane;
+	private JTextField ArtistIDtextField;
 	private JTextField ArtistNametextField;
 	private JTextField ArtistAgetextField;
 	private JTextField ArtistGendertextField;
@@ -35,6 +36,7 @@ public class Artist extends JFrame {
 	private JTable Artisttable;
 	
 	ArtistCRUD artistCRUD = new ArtistCRUD();
+	
 	/**
 	 * Launch the application.
 	 */
@@ -130,48 +132,59 @@ public class Artist extends JFrame {
 		btnBuyerCart.setBounds(799, 69, 89, 23);
 		panelHolder.add(btnBuyerCart);
 		
+		JLabel lblArtistId = new JLabel("Artist ID");
+		lblArtistId.setFont(new Font("Trebuchet MS", Font.PLAIN, 14));
+		lblArtistId.setBounds(27, 30, 79, 31);
+		panel.add(lblArtistId);
+		
+		ArtistIDtextField = new JTextField();
+		ArtistIDtextField.setFont(new Font("Times New Roman", Font.PLAIN, 13));
+		ArtistIDtextField.setColumns(10);
+		ArtistIDtextField.setBounds(145, 30, 185, 25);
+		panel.add(ArtistIDtextField);
+		
 		JLabel lblArtistName = new JLabel("Name");
 		lblArtistName.setFont(new Font("Trebuchet MS", Font.PLAIN, 14));
-		lblArtistName.setBounds(27, 35, 79, 31);
+		lblArtistName.setBounds(27, 69, 79, 31);
 		panel.add(lblArtistName);
 		
 		ArtistNametextField = new JTextField();
 		ArtistNametextField.setFont(new Font("Times New Roman", Font.PLAIN, 13));
-		ArtistNametextField.setBounds(145, 38, 185, 25);
+		ArtistNametextField.setBounds(145, 73, 185, 25);
 		panel.add(ArtistNametextField);
 		ArtistNametextField.setColumns(10);
 		
 		JLabel lblArtistAge = new JLabel("Age");
 		lblArtistAge.setFont(new Font("Trebuchet MS", Font.PLAIN, 14));
-		lblArtistAge.setBounds(27, 91, 79, 31);
+		lblArtistAge.setBounds(27, 116, 79, 31);
 		panel.add(lblArtistAge);
 		
 		ArtistAgetextField = new JTextField();
 		ArtistAgetextField.setFont(new Font("Times New Roman", Font.PLAIN, 13));
-		ArtistAgetextField.setBounds(145, 93, 185, 25);
+		ArtistAgetextField.setBounds(145, 120, 185, 25);
 		panel.add(ArtistAgetextField);
 		ArtistAgetextField.setColumns(10);
 		
 		JLabel lblArtistGender = new JLabel("Gender");
 		lblArtistGender.setFont(new Font("Trebuchet MS", Font.PLAIN, 14));
-		lblArtistGender.setBounds(27, 145, 79, 31);
+		lblArtistGender.setBounds(27, 161, 79, 31);
 		panel.add(lblArtistGender);
 		
 		ArtistGendertextField = new JTextField();
 		ArtistGendertextField.setFont(new Font("Times New Roman", Font.PLAIN, 13));
 		ArtistGendertextField.setColumns(10);
-		ArtistGendertextField.setBounds(145, 147, 185, 25);
+		ArtistGendertextField.setBounds(145, 165, 185, 25);
 		panel.add(ArtistGendertextField);
 		
 		JLabel lblArtistAddress = new JLabel("Address");
 		lblArtistAddress.setFont(new Font("Trebuchet MS", Font.PLAIN, 14));
-		lblArtistAddress.setBounds(27, 196, 92, 31);
+		lblArtistAddress.setBounds(27, 206, 92, 31);
 		panel.add(lblArtistAddress);
 		
 		ArtistAddresstextField = new JTextField();
 		ArtistAddresstextField.setFont(new Font("Times New Roman", Font.PLAIN, 13));
 		ArtistAddresstextField.setColumns(10);
-		ArtistAddresstextField.setBounds(145, 198, 185, 25);
+		ArtistAddresstextField.setBounds(145, 210, 185, 25);
 		panel.add(ArtistAddresstextField);
 		
 		JLabel lblArtistContactNumber = new JLabel("Contact Number");
@@ -182,8 +195,9 @@ public class Artist extends JFrame {
 		ArtistContactNumbertextField = new JTextField();
 		ArtistContactNumbertextField.setFont(new Font("Times New Roman", Font.PLAIN, 13));
 		ArtistContactNumbertextField.setColumns(10);
-		ArtistContactNumbertextField.setBounds(145, 249, 185, 25);
+		ArtistContactNumbertextField.setBounds(145, 254, 185, 25);
 		panel.add(ArtistContactNumbertextField);
+		
 		
 		JLabel lblArtistsLabel = new JLabel("ARTISTS");
 		lblArtistsLabel.setFont(new Font("Century Schoolbook", Font.PLAIN, 18));
@@ -202,7 +216,7 @@ public class Artist extends JFrame {
 		panel_1.add(Artisttable);
 		
 		//Display data in table
-		String[] columnNames = {"Name", "Age", "Gender", 
+		String[] columnNames = {"ID", "Name", "Age", "Gender", 
 								"Address", "Contact Number"};
 		DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
 		tableModel.addRow(columnNames);
@@ -216,13 +230,14 @@ public class Artist extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				ArtistValues artist = new ArtistValues();
 				
-				boolean isFilled = !ArtistNametextField.getText().equals("") && !ArtistAddresstextField.getText().equals(""); 
+				boolean isFilled = !ArtistIDtextField.getText().equals("") && !ArtistNametextField.getText().equals("") && !ArtistAddresstextField.getText().equals(""); 
 				//fields that needs to be filled out
 				
 				try {
 					if(isFilled) {
 						
 					//setting the values
+						artist.setArtistID(ArtistIDtextField.getText());
 						artist.setArtistName(ArtistNametextField.getText());
 						artist.setArtistAge(ArtistAgetextField.getText());
 						artist.setArtistGender(ArtistGendertextField.getText());
@@ -260,6 +275,7 @@ public class Artist extends JFrame {
 					if(isFilled) {
 						
 					//setting the values
+						artistEdit.setArtistID(ArtistIDtextField.getText());
 						artistEdit.setArtistName(ArtistNametextField.getText());
 						artistEdit.setArtistAge(ArtistAgetextField.getText());
 						artistEdit.setArtistGender(ArtistGendertextField.getText());
@@ -378,6 +394,7 @@ public class Artist extends JFrame {
 	
 	//In editing: SETTING text into TEXTFIELDs
 		public void setTexts(ArtistValues artist) {
+			ArtistIDtextField.setText(artist.getArtistID());
 			ArtistNametextField.setText(artist.getArtistName());
 			ArtistAgetextField.setText(artist.getArtistAge());
 			ArtistGendertextField.setText(artist.getArtistGender());

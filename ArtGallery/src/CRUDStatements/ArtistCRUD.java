@@ -20,15 +20,16 @@ public class ArtistCRUD {
 	*/
 	
 	
-//getByArtistName
-	public ArtistValues artistVal (String ArtistName){
+//getByArtistID
+	public ArtistValues artistVal (String ArtistID){
 		ArtistValues artist = new ArtistValues();
 		conn =   DBConnection.getConnection();
 		try {
-			PreparedStatement SlctByStatement = conn.prepareStatement("SELECT * FROM artist WHERE ArtistName = '" + ArtistName +"'");  
+			PreparedStatement SlctByStatement = conn.prepareStatement("SELECT * FROM artist WHERE ArtistID = '" + ArtistID +"'");  
 			ResultSetObject = SlctByStatement.executeQuery();
 				
 			if(ResultSetObject.next()) {
+				artist.setArtistID(ResultSetObject.getString("ArtistID"));
 				artist.setArtistName(ResultSetObject.getString("ArtistName"));
 				artist.setArtistAge(ResultSetObject.getString("ArtistAge"));
 				artist.setArtistGender(ResultSetObject.getString("ArtistGender"));
@@ -52,6 +53,7 @@ public class ArtistCRUD {
 			
 			while(ResultSetObject.next()) {
 				ArtistValues artist = new ArtistValues();
+				artist.setArtistID(ResultSetObject.getString("ArtistID"));
 				artist.setArtistName(ResultSetObject.getString("ArtistName"));
 				artist.setArtistAge(ResultSetObject.getString("ArtistAge"));
 				artist.setArtistGender(ResultSetObject.getString("ArtistGender"));
@@ -74,13 +76,13 @@ public class ArtistCRUD {
 		int tableFill = 0;
 		
 		try {
-			InsStatement = conn.prepareStatement("INSERT into artist VALUES (?, ?, ?, ?, ?)");
-			
-			InsStatement.setString(1, artist.getArtistName());
-			InsStatement.setString(2, artist.getArtistAge());
-			InsStatement.setString(3, artist.getArtistGender());
-			InsStatement.setString(4, artist.getArtistAddress());
-			InsStatement.setString(5, artist.getArtistContactNumber());
+			InsStatement = conn.prepareStatement("INSERT into artist VALUES (?, ?, ?, ?, ?, ?)");
+			InsStatement.setString(1, artist.getArtistID());
+			InsStatement.setString(2, artist.getArtistName());
+			InsStatement.setString(3, artist.getArtistAge());
+			InsStatement.setString(4, artist.getArtistGender());
+			InsStatement.setString(5, artist.getArtistAddress());
+			InsStatement.setString(6, artist.getArtistContactNumber());
 			
 			tableFill = InsStatement.executeUpdate();
 			
@@ -95,17 +97,19 @@ public class ArtistCRUD {
 	public static void Update(ArtistValues artist) {
 		conn = DBConnection.getConnection();
 		try {
-			PreparedStatement UpdateStatement = conn.prepareStatement("UPDATE artist SET ArtistAge = ?, "
+			PreparedStatement UpdateStatement = conn.prepareStatement("UPDATE artist SET ArtistName = ?, "
+																	+ "ArtistAge = ?, "
 																	+ "ArtistGender = ?, "
 																	+ "ArtistAddress = ?, "
 																	+ "ArtistContactNumber = ? "
-																	+ "WHERE ArtistName = ?");
+																	+ "WHERE ArtistID = ?");
 			
-			UpdateStatement.setString(5, artist.getArtistName());
-			UpdateStatement.setString(1, artist.getArtistAge());
-			UpdateStatement.setString(2, artist.getArtistGender());
-			UpdateStatement.setString(3, artist.getArtistAddress());
-			UpdateStatement.setString(4, artist.getArtistContactNumber());
+			UpdateStatement.setString(6, artist.getArtistID());
+			UpdateStatement.setString(1, artist.getArtistName());
+			UpdateStatement.setString(2, artist.getArtistAge());
+			UpdateStatement.setString(3, artist.getArtistGender());
+			UpdateStatement.setString(4, artist.getArtistAddress());
+			UpdateStatement.setString(5, artist.getArtistContactNumber());
 			
 			UpdateStatement.execute();
 			
@@ -116,12 +120,12 @@ public class ArtistCRUD {
 	}
 	
 //DELETING a row in the table
-	public void Delete(String ArtistName) {
+	public void Delete(String ArtistID) {
 		conn = DBConnection.getConnection();
 		try {
-			PreparedStatement DeleteStatement = conn.prepareStatement("DELETE FROM `artist` WHERE `ArtistName` = ?");
+			PreparedStatement DeleteStatement = conn.prepareStatement("DELETE FROM `artist` WHERE `ArtistID` = ?");
 			
-			DeleteStatement.setString(1, ArtistName);
+			DeleteStatement.setString(1, ArtistID);
 			DeleteStatement.execute();
 			
 		} catch (SQLException e) {

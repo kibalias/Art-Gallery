@@ -3,12 +3,21 @@ package value;
  * Artist: to store and get the values from the database and input fields 
  */
 public class ArtistValues {
-	private String artist_name,
+	private String 	artist_id,
+					artist_name,
 					artist_age,
 					artist_gender,
 					artist_address,
 					artist_contactnum;
 
+	public void setArtistID(String ArtistID) {
+		 artist_id = ArtistID;
+	}
+	
+	public String getArtistID() {
+		return artist_id;
+	}
+	
 	public void setArtistName(String ArtistName) {
 		 artist_name = ArtistName;
 	}

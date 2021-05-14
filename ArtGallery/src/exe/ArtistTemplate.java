@@ -25,6 +25,7 @@ public class ArtistTemplate {
 		
 		for (ArtistValues artistVal : artist) {
 			Object list[] = {
+					artistVal.getArtistID(),
 					artistVal.getArtistName(),
 					artistVal.getArtistAge(),
 					artistVal.getArtistGender(),
