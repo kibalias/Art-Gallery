@@ -30,8 +30,7 @@ public class ArtworksTemplate {
 					artVal.getArtStyle(),
 					artVal.getYearOfMaking(),
 					artVal.getArtistID(),
-					artVal.getArtPrice(),
-					artVal.getArtStatus()
+					artVal.getArtPrice()
 			};
 		table.addRow(list);
 		}
@@ -45,8 +44,7 @@ public class ArtworksTemplate {
 					artVal.getArtStyle(),
 					artVal.getYearOfMaking(),
 					artVal.getArtistID(),
-					artVal.getArtPrice(),
-					artVal.getArtStatus()
+					artVal.getArtPrice()
 			};
 		table.addRow(list);
 		}
@@ -62,14 +60,10 @@ public class ArtworksTemplate {
 					artVal.getArtStyle(),
 					artVal.getYearOfMaking(),
 					artVal.getArtistID(),
-					artVal.getArtPrice(),
-					artVal.getArtStatus()
+					artVal.getArtPrice()
 			};
 			
 		table.addRow(list);
 		}
 	}
-	
-	
-	
 }

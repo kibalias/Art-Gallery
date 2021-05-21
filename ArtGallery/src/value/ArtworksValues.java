@@ -7,8 +7,7 @@ public class ArtworksValues {
 					art_title,
 					art_style,
 					year_of_making,
-					artist_id,
-					art_status;
+					artist_id;
 	private Float 	art_price;
 	
 	public void setArtCode(String ArtCode) {
@@ -49,14 +48,6 @@ public class ArtworksValues {
 	
 	public String getArtistID() {
 		return artist_id;
-	}
-	
-	public void setArtStatus(String ArtStatus) {
-		art_status = ArtStatus;
-	}
-	
-	public String getArtStatus() {
-		return art_status;
 	}
 	
 	public void setArtPrice(Float ArtPrice) {

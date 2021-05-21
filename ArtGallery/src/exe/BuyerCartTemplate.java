@@ -30,6 +30,7 @@ public class BuyerCartTemplate {
 						buyerCartVal.getId(),
 						buyerCartVal.getArtCode(),
 						buyerCartVal.getBuyerId(),
+						buyerCartVal.getPaymentStatus()
 				};
 			table.addRow(list);
 			}

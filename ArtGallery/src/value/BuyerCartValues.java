@@ -4,8 +4,8 @@ package value;
  */
 public class BuyerCartValues {
 	private String 	art_code,
-					buyer_id;
-	private Float 	amount;
+					buyer_id,
+					payment_status;
 	private Integer id;
 	
 	public void setId(Integer cartID) {
@@ -16,12 +16,12 @@ public class BuyerCartValues {
 		return id;
 	}
 	
-	public String getArtCode() {
-		return art_code;
-	}
-	
 	public void setArtCode(String ArtCode) {
 		art_code = ArtCode;
+	}
+	
+	public String getArtCode() {
+		return art_code;
 	}
 	
 	public void setBuyerId(String BuyerId) {
@@ -32,11 +32,11 @@ public class BuyerCartValues {
 		return buyer_id;
 	}
 	
-/*	public void setAmount(Float ProdAmount) {
-		amount = ProdAmount;
+	public void setPaymentStatus(String PaymentStatus) {
+		payment_status = PaymentStatus;
 	}
-	public Float getAmount() {
-		return amount;
+	public String getPaymentStatus() {
+		return payment_status;
 	}
-*/	
+
 }
