@@ -167,7 +167,7 @@ public class BuyerCart extends JFrame {
 		panel_1.add(Carttable);
 		
 		//Display data in table
-		String[] columnNames = {"id", "Art Code", "Buyer ID"};
+		String[] columnNames = {"id", "Art Code", "Buyer ID", "Payment Status"};
 		DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
 		tableModel.addRow(columnNames);
 		BuyerCartTemplate.readData(tableModel);

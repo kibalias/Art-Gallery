@@ -296,7 +296,6 @@ public class Buyer extends JFrame {
 						buyerEdit.setBuyerContactNumber(ContactNumbertextField.getText());
 						
 						BuyerCRUD.Update(buyerEdit);
-						JOptionPane.showMessageDialog(null, "Saved Changes.");
 						setVisible(false);
 						
 						Buyer frame = new Buyer();

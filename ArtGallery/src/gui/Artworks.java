@@ -39,7 +39,6 @@ public class Artworks extends JFrame {
 	private JTextField ArtStyletextField;
 	private JTextField YearOfMakingtextField;
 	private JTextField ArtisttextField;
-	private JTextField ArtStatustextField;
 	private JTextField ArtPricetextField;
 	private JTable Artworkstable;
 	
@@ -145,7 +144,7 @@ public class Artworks extends JFrame {
 		
 		JLabel lblArtCode = new JLabel("Art Code");
 		lblArtCode.setFont(new Font("Trebuchet MS", Font.PLAIN, 14));
-		lblArtCode.setBounds(27, 35, 79, 31);
+		lblArtCode.setBounds(25, 35, 79, 31);
 		panel.add(lblArtCode);
 		
 		ArtCodetextField = new JTextField();
@@ -156,58 +155,47 @@ public class Artworks extends JFrame {
 		
 		JLabel lblArtTitle = new JLabel("Art Title");
 		lblArtTitle.setFont(new Font("Trebuchet MS", Font.PLAIN, 14));
-		lblArtTitle.setBounds(27, 70, 79, 31);
+		lblArtTitle.setBounds(27, 77, 79, 31);
 		panel.add(lblArtTitle);
 		
 		ArtTitletextField = new JTextField();
 		ArtTitletextField.setFont(new Font("Times New Roman", Font.PLAIN, 13));
-		ArtTitletextField.setBounds(145, 69, 185, 25);
+		ArtTitletextField.setBounds(145, 77, 185, 25);
 		panel.add(ArtTitletextField);
 		ArtTitletextField.setColumns(10);
 		
 		JLabel lblArtStyle = new JLabel("Art Style");
 		lblArtStyle.setFont(new Font("Trebuchet MS", Font.PLAIN, 14));
-		lblArtStyle.setBounds(27, 105, 79, 31);
+		lblArtStyle.setBounds(27, 117, 79, 31);
 		panel.add(lblArtStyle);
 		
 		ArtStyletextField = new JTextField();
 		ArtStyletextField.setFont(new Font("Times New Roman", Font.PLAIN, 13));
 		ArtStyletextField.setColumns(10);
-		ArtStyletextField.setBounds(145, 105, 185, 25);
+		ArtStyletextField.setBounds(145, 121, 185, 25);
 		panel.add(ArtStyletextField);
 		
 		JLabel lblYearOfMaking = new JLabel("Year of Making");
 		lblYearOfMaking.setFont(new Font("Trebuchet MS", Font.PLAIN, 14));
-		lblYearOfMaking.setBounds(27, 143, 92, 31);
+		lblYearOfMaking.setBounds(27, 161, 92, 31);
 		panel.add(lblYearOfMaking);
 		
 		YearOfMakingtextField = new JTextField();
 		YearOfMakingtextField.setFont(new Font("Times New Roman", Font.PLAIN, 13));
 		YearOfMakingtextField.setColumns(10);
-		YearOfMakingtextField.setBounds(145, 141, 185, 25);
+		YearOfMakingtextField.setBounds(145, 165, 185, 25);
 		panel.add(YearOfMakingtextField);
 		
 		JLabel lblArtist = new JLabel("Artist ID");
 		lblArtist.setFont(new Font("Trebuchet MS", Font.PLAIN, 14));
-		lblArtist.setBounds(27, 179, 92, 31);
+		lblArtist.setBounds(27, 204, 92, 31);
 		panel.add(lblArtist);
 		
 		ArtisttextField = new JTextField();
 		ArtisttextField.setFont(new Font("Times New Roman", Font.PLAIN, 13));
 		ArtisttextField.setColumns(10);
-		ArtisttextField.setBounds(145, 177, 185, 25);
+		ArtisttextField.setBounds(145, 207, 185, 25);
 		panel.add(ArtisttextField);
-		
-		JLabel lblArtStatus = new JLabel("Art Status");
-		lblArtStatus.setFont(new Font("Trebuchet MS", Font.PLAIN, 14));
-		lblArtStatus.setBounds(27, 215, 92, 31);
-		panel.add(lblArtStatus);
-		
-		ArtStatustextField = new JTextField();
-		ArtStatustextField.setFont(new Font("Times New Roman", Font.PLAIN, 13));
-		ArtStatustextField.setColumns(10);
-		ArtStatustextField.setBounds(145, 213, 185, 25);
-		panel.add(ArtStatustextField);
 		
 		JLabel lblArtPrice = new JLabel("Art Price");
 		lblArtPrice.setFont(new Font("Trebuchet MS", Font.PLAIN, 14));
@@ -239,7 +227,7 @@ public class Artworks extends JFrame {
 		
 		//Display data in table
 		String[] columnNames = {"Art Code", "Art Title", "Art Style", "Year of Making", 
-								"Artist", "Art Status", "Art Price"};
+								"Artist ID", "Art Price"};
 		DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
 		tableModel.addRow(columnNames);
 		ArtworksTemplate.readData(tableModel);
@@ -267,7 +255,6 @@ public class Artworks extends JFrame {
 						artworks.setArtStyle(ArtStyletextField.getText());
 						artworks.setYearOfMaking(YearOfMakingtextField.getText());
 						artworks.setArtistID(ArtisttextField.getText());
-						artworks.setArtStatus(ArtStatustextField.getText());
 						artworks.setArtPrice(Float.parseFloat(ArtPricetextField.getText()));
 						
 						JOptionPane.showMessageDialog(null, ArtworksTemplate.rowCheck(artworks));
@@ -309,11 +296,9 @@ ArtworksValues artworkEdit = new ArtworksValues();
 						artworkEdit.setYearOfMaking(YearOfMakingtextField.getText());
 						artworkEdit.setArtistID(ArtisttextField.getText());
 						artworkEdit.setArtPrice(Float.parseFloat(ArtPricetextField.getText()));
-						artworkEdit.setArtStatus(ArtStatustextField.getText());
 						
 						ArtworksCRUD.Update(artworkEdit);
 						clear();
-						JOptionPane.showMessageDialog(null, "Saved Changes.");
 						tableModel.setRowCount(1);
 						temp.readData(tableModel);
 						btnAdd.setVisible(true);
@@ -406,7 +391,6 @@ ArtworksValues artworkEdit = new ArtworksValues();
 				tableModel.setRowCount(1);
 				temp.readData(tableModel);
 				
-				
 				}
 				
 			}
@@ -438,7 +422,6 @@ private void clear() {
 	ArtStyletextField.setText("");
 	YearOfMakingtextField.setText("");
 	ArtisttextField.setText("");
-	ArtStatustextField.setText("");
 	ArtPricetextField.setText("");
 	}
 	
@@ -449,7 +432,6 @@ private void clear() {
 			ArtStyletextField.setText(artworks.getArtStyle());
 			YearOfMakingtextField.setText(artworks.getYearOfMaking());
 			ArtisttextField.setText(artworks.getArtistID());
-			ArtStatustextField.setText(artworks.getArtStatus());
 			ArtPricetextField.setText(String.valueOf(artworks.getArtPrice()));
 		}
 }

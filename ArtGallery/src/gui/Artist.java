@@ -283,7 +283,6 @@ public class Artist extends JFrame {
 						artistEdit.setArtistContactNumber(ArtistContactNumbertextField.getText());
 						
 						ArtistCRUD.Update(artistEdit);
-						JOptionPane.showMessageDialog(null, "Saved Changes.");
 						setVisible(false);
 						
 						Artist frame = new Artist();
