@@ -16,27 +16,28 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `prodcart`
+-- Table structure for table `sales`
 --
 
-DROP TABLE IF EXISTS `prodcart`;
+DROP TABLE IF EXISTS `sales`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `prodcart` (
+CREATE TABLE `sales` (
   `id` int NOT NULL AUTO_INCREMENT,
   `ArtCode` char(5) NOT NULL,
   `BuyerID` varchar(5) NOT NULL,
+  `PaymentStatusCode` varchar(2) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `prodcart`
+-- Dumping data for table `sales`
 --
 
-LOCK TABLES `prodcart` WRITE;
-/*!40000 ALTER TABLE `prodcart` DISABLE KEYS */;
-/*!40000 ALTER TABLE `prodcart` ENABLE KEYS */;
+LOCK TABLES `sales` WRITE;
+/*!40000 ALTER TABLE `sales` DISABLE KEYS */;
+/*!40000 ALTER TABLE `sales` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -48,4 +49,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-05-14 17:31:32
+-- Dump completed on 2021-05-21 17:33:59
