@@ -5,6 +5,7 @@ import connection.DBConnection;
 import java.sql.*;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 import value.ArtworksValues;
@@ -39,7 +40,6 @@ public class ArtworksCRUD {
 				artworks.setYearOfMaking(ResultSetObject.getString("YearOfMaking"));
 				artworks.setArtistID(ResultSetObject.getString("ArtistID"));
 				artworks.setArtPrice(ResultSetObject.getFloat("ArtPrice"));
-				artworks.setArtStatus(ResultSetObject.getString("ArtStatus"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -65,7 +65,6 @@ public class ArtworksCRUD {
 				artworks.setYearOfMaking(ResultSetObject.getString("YearOfMaking"));
 				artworks.setArtistID(ResultSetObject.getString("ArtistID"));
 				artworks.setArtPrice(ResultSetObject.getFloat("ArtPrice"));
-				artworks.setArtStatus(ResultSetObject.getString("ArtStatus"));
 				
 				artList.add(artworks);
 			}
@@ -84,7 +83,7 @@ public class ArtworksCRUD {
 		int tableFill = 0;
 		
 		try {
-			InsStatement = conn.prepareStatement("INSERT into artworks VALUES (?, ?, ?, ?, ?, ?, ?)");
+			InsStatement = conn.prepareStatement("INSERT into artworks VALUES (?, ?, ?, ?, ?, ?)");
 			
 			InsStatement.setString(1, artwork.getArtCode());
 			InsStatement.setString(2, artwork.getArtTitle());
@@ -92,7 +91,6 @@ public class ArtworksCRUD {
 			InsStatement.setString(4, artwork.getYearOfMaking());
 			InsStatement.setString(5, artwork.getArtistID());
 			InsStatement.setFloat(6, artwork.getArtPrice());
-			InsStatement.setString(7, artwork.getArtStatus());
 			
 			tableFill = InsStatement.executeUpdate();
 			
@@ -108,21 +106,22 @@ public class ArtworksCRUD {
 	public static void Update(ArtworksValues artwork) {
 		conn = DBConnection.getConnection();
 		try {
-			PreparedStatement UpdateStatement = conn.prepareStatement("UPDATE artworks SET ArtTitle = ?, ArtStyle = ?, YearOfMaking = ?, ArtistID = ?, ArtPrice = ?, ArtStatus = ? WHERE ArtCode = ?");
+			PreparedStatement UpdateStatement = conn.prepareStatement("UPDATE artworks SET ArtTitle = ?, ArtStyle = ?, YearOfMaking = ?, ArtistID = ?, ArtPrice = ? WHERE ArtCode = ?");
 			
-			UpdateStatement.setString(7, artwork.getArtCode());
+			UpdateStatement.setString(6, artwork.getArtCode());
 			UpdateStatement.setString(1, artwork.getArtTitle());
 			UpdateStatement.setString(2, artwork.getArtStyle());
 			UpdateStatement.setString(3, artwork.getYearOfMaking());
 			UpdateStatement.setString(4, artwork.getArtistID());
 			UpdateStatement.setFloat(5, artwork.getArtPrice());
-			UpdateStatement.setString(6, artwork.getArtStatus());
 			
 			UpdateStatement.execute();
 			
+			JOptionPane.showMessageDialog(null, "Saved changes.");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Changes cannot be saved. Try again.");
 		}
 	}
 	
@@ -158,7 +157,6 @@ public class ArtworksCRUD {
 					artworks.setYearOfMaking(rs.getString("YearOfMaking"));
 					artworks.setArtistID(rs.getString("ArtistID"));
 					artworks.setArtPrice(rs.getFloat("ArtPrice"));
-					artworks.setArtStatus(rs.getString("ArtStatus"));
 					
 					artList.add(artworks);
 				//	System.out.println("Query: Found "+ rs.getString("ArtCode"));

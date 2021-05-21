@@ -28,7 +28,7 @@ public class BuyerCartCRUD {
 			
 			try {
 				conn =   DBConnection.getConnection();
-				PreparedStatement SelectStatement = conn.prepareStatement("SELECT * FROM prodcart");  
+				PreparedStatement SelectStatement = conn.prepareStatement("SELECT * FROM sales");  
 				ResultSetObject = SelectStatement.executeQuery();
 				
 				while(ResultSetObject.next()) {
@@ -36,6 +36,7 @@ public class BuyerCartCRUD {
 					buyercart.setId(ResultSetObject.getInt("id"));
 					buyercart.setArtCode(ResultSetObject.getString("ArtCode"));
 					buyercart.setBuyerId(ResultSetObject.getString("BuyerID"));
+					buyercart.setPaymentStatus(ResultSetObject.getString("PaymentStatusCode"));
 					
 					cartList.add(buyercart);
 				}
@@ -53,10 +54,11 @@ public class BuyerCartCRUD {
 			int tableFill = 0;
 			
 			try {
-				InsStatement = conn.prepareStatement("INSERT into prodcart VALUES (null, ?, ?)");
+				InsStatement = conn.prepareStatement("INSERT into prodcart VALUES (null, ?, ?, ?)");
 				
 				InsStatement.setString(1, cart.getArtCode());
 				InsStatement.setString(2, cart.getBuyerId());
+				InsStatement.setString(3, cart.getPaymentStatus());
 				
 				tableFill = InsStatement.executeUpdate();
 				
@@ -82,7 +84,7 @@ public class BuyerCartCRUD {
 		public void Delete(int id) {
 			conn = DBConnection.getConnection();
 			try {
-				PreparedStatement DeleteStatement = conn.prepareStatement("DELETE FROM `prodcart` WHERE `id` = ?");
+				PreparedStatement DeleteStatement = conn.prepareStatement("DELETE FROM `sales` WHERE `id` = ?");
 				
 				DeleteStatement.setInt(1, id);
 				DeleteStatement.execute();

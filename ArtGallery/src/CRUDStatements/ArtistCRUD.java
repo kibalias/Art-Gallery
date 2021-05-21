@@ -6,6 +6,8 @@ import value.ArtistValues;
 import java.sql.*;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 public class ArtistCRUD {
 	
 	static Connection conn = null;
@@ -113,9 +115,11 @@ public class ArtistCRUD {
 			
 			UpdateStatement.execute();
 			
+			JOptionPane.showMessageDialog(null, "Saved changes.");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Changes cannot be saved. Try again.");
 		}
 	}
 	
