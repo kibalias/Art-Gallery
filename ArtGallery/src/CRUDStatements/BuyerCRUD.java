@@ -21,7 +21,9 @@ public class BuyerCRUD {
 					buyer_age,
 					buyer_gender,
 					buyer_address,
-					buyer_affiliation,
+					buyer_city,
+					buyer_state,
+					buyer_zip,
 					buyer_contactnum;
  */
 	//getByArtCode
@@ -38,7 +40,9 @@ public class BuyerCRUD {
 					buyer.setBuyerAge(ResultSetObject.getString("BuyerAge"));
 					buyer.setBuyerGender(ResultSetObject.getString("BuyerGender"));
 					buyer.setBuyerAddress(ResultSetObject.getString("BuyerAddress"));
-					buyer.setBuyerAffiliation(ResultSetObject.getString("BuyerAffiliation"));
+					buyer.setBuyerCity(ResultSetObject.getString("BuyerCity"));
+					buyer.setBuyerState(ResultSetObject.getString("BuyerState"));
+					buyer.setBuyerZIP(ResultSetObject.getString("BuyerZIP"));
 					buyer.setBuyerContactNumber(ResultSetObject.getString("BuyerContactNumber"));
 				}
 			} catch (Exception e) {
@@ -65,7 +69,9 @@ public class BuyerCRUD {
 					buyer.setBuyerAge(ResultSetObject.getString("BuyerAge"));
 					buyer.setBuyerGender(ResultSetObject.getString("BuyerGender"));
 					buyer.setBuyerAddress(ResultSetObject.getString("BuyerAddress"));
-					buyer.setBuyerAffiliation(ResultSetObject.getString("BuyerAffiliation"));
+					buyer.setBuyerCity(ResultSetObject.getString("BuyerCity"));
+					buyer.setBuyerState(ResultSetObject.getString("BuyerState"));
+					buyer.setBuyerZIP(ResultSetObject.getString("BuyerZIP"));
 					buyer.setBuyerContactNumber(ResultSetObject.getString("BuyerContactNumber"));
 					
 					buyerList.add(buyer);
@@ -85,15 +91,17 @@ public class BuyerCRUD {
 			int tableFill = 0;
 			
 			try {
-				InsStatement = conn.prepareStatement("INSERT into buyer VALUES (?, ?, ?, ?, ?, ?, ?)");
+				InsStatement = conn.prepareStatement("INSERT into buyer VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
 				
 				InsStatement.setString(1, buyer.getBuyerId());
 				InsStatement.setString(2, buyer.getBuyerName());
 				InsStatement.setString(3, buyer.getBuyerAge());
 				InsStatement.setString(4, buyer.getBuyerGender());
 				InsStatement.setString(5, buyer.getBuyerAddress());
-				InsStatement.setString(6, buyer.getBuyerAffiliation());
-				InsStatement.setString(7, buyer.getBuyerContactNumber());
+				InsStatement.setString(6, buyer.getBuyerCity());
+				InsStatement.setString(7, buyer.getBuyerState());
+				InsStatement.setString(8, buyer.getBuyerZIP());
+				InsStatement.setString(9, buyer.getBuyerContactNumber());
 				
 				tableFill = InsStatement.executeUpdate();
 				
@@ -109,15 +117,19 @@ public class BuyerCRUD {
 		public static void Update(BuyerValues buyer) {
 			conn = DBConnection.getConnection();
 			try {
-				PreparedStatement UpdateStatement = conn.prepareStatement("UPDATE `buyer` SET BuyerName = ?, BuyerAge = ?, BuyerGender = ?, BuyerAddress = ?, BuyerAffiliation = ?, BuyerContactNumber = ? WHERE `BuyerID` = ?");
+				PreparedStatement UpdateStatement = conn.prepareStatement("UPDATE `buyer` SET BuyerName = ?, BuyerAge = ?, BuyerGender = ?, "
+																		+ "BuyerAddress = ?, BuyerCity = ?, BuyerState = ?, BuyerZIP = ?, "
+																		+ "BuyerContactNumber = ? WHERE `BuyerID` = ?");
 				
-				UpdateStatement.setString(7, buyer.getBuyerId());
+				UpdateStatement.setString(9, buyer.getBuyerId());
 				UpdateStatement.setString(1, buyer.getBuyerName());
 				UpdateStatement.setString(2, buyer.getBuyerAge());
 				UpdateStatement.setString(3, buyer.getBuyerGender());
 				UpdateStatement.setString(4, buyer.getBuyerAddress());
-				UpdateStatement.setString(5, buyer.getBuyerAffiliation());
-				UpdateStatement.setString(6, buyer.getBuyerContactNumber());
+				UpdateStatement.setString(5, buyer.getBuyerCity());
+				UpdateStatement.setString(6, buyer.getBuyerState());
+				UpdateStatement.setString(7, buyer.getBuyerZIP());
+				UpdateStatement.setString(8, buyer.getBuyerContactNumber());
 				
 				UpdateStatement.execute();
 				

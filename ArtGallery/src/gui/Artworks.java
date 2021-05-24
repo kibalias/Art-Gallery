@@ -38,8 +38,8 @@ public class Artworks extends JFrame {
 	private JTextField ArtTitletextField;
 	private JTextField ArtStyletextField;
 	private JTextField YearOfMakingtextField;
+	private JTextField DimensiontextField;
 	private JTextField ArtisttextField;
-	private JTextField ArtPricetextField;
 	private JTable Artworkstable;
 	
 	protected ArtworksCRUD artworkCRUD = new ArtworksCRUD();
@@ -94,20 +94,20 @@ public class Artworks extends JFrame {
 		panelHolder.add(DatabaseLabel);
 		
 //Button to redirect to Artist GUI	
-		JButton btnArtist = new JButton("Artist");
-		btnArtist.setBackground(new Color(192, 192, 192));
-		btnArtist.addMouseListener(new MouseAdapter() {
+		JButton btnSeller = new JButton("Seller");
+		btnSeller.setBackground(new Color(192, 192, 192));
+		btnSeller.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
 				setVisible(false);
-				Artist frame = new Artist();
+				Seller frame = new Seller();
 				frame.setVisible(true);
 			}
 		});
-		btnArtist.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		btnArtist.setBounds(601, 69, 89, 23);
-		panelHolder.add(btnArtist);
+		btnSeller.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		btnSeller.setBounds(700, 69, 89, 23);
+		panelHolder.add(btnSeller);
 		
 //Button to redirect to Buyer GUI
 		JButton btnBuyer = new JButton("Buyer");
@@ -122,25 +122,25 @@ public class Artworks extends JFrame {
 			}
 		});
 		btnBuyer.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		btnBuyer.setBounds(701, 69, 89, 23);
+		btnBuyer.setBounds(595, 69, 89, 23);
 		panelHolder.add(btnBuyer);
 		
 //Button to redirect to Buyer Cart GUI
-		JButton btnBuyerCart = new JButton("Buyer Cart");
-		btnBuyerCart.setBackground(new Color(192, 192, 192));
-		btnBuyerCart.addMouseListener(new MouseAdapter() {
+		JButton btnSales = new JButton("Sales");
+		btnSales.setBackground(new Color(192, 192, 192));
+		btnSales.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
 				setVisible(false);
-				BuyerCart frame = new BuyerCart();
+				Sales frame = new Sales();
 				frame.setVisible(true);
 				
 			}
 		});
-		btnBuyerCart.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		btnBuyerCart.setBounds(799, 69, 89, 23);
-		panelHolder.add(btnBuyerCart);
+		btnSales.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		btnSales.setBounds(799, 69, 89, 23);
+		panelHolder.add(btnSales);
 		
 		JLabel lblArtCode = new JLabel("Art Code");
 		lblArtCode.setFont(new Font("Trebuchet MS", Font.PLAIN, 14));
@@ -186,27 +186,27 @@ public class Artworks extends JFrame {
 		YearOfMakingtextField.setBounds(145, 165, 185, 25);
 		panel.add(YearOfMakingtextField);
 		
-		JLabel lblArtist = new JLabel("Artist ID");
+		JLabel lblDimension = new JLabel("Dimension");
+		lblDimension.setFont(new Font("Trebuchet MS", Font.PLAIN, 14));
+		lblDimension.setBounds(27, 204, 92, 31);
+		panel.add(lblDimension);
+		
+		DimensiontextField = new JTextField();
+		DimensiontextField.setFont(new Font("Times New Roman", Font.PLAIN, 13));
+		DimensiontextField.setColumns(10);
+		DimensiontextField.setBounds(145, 207, 185, 25);
+		panel.add(DimensiontextField);
+		
+		JLabel lblArtist = new JLabel("Artist");
 		lblArtist.setFont(new Font("Trebuchet MS", Font.PLAIN, 14));
-		lblArtist.setBounds(27, 204, 92, 31);
+		lblArtist.setBounds(27, 250, 92, 31);
 		panel.add(lblArtist);
 		
 		ArtisttextField = new JTextField();
 		ArtisttextField.setFont(new Font("Times New Roman", Font.PLAIN, 13));
 		ArtisttextField.setColumns(10);
-		ArtisttextField.setBounds(145, 207, 185, 25);
+		ArtisttextField.setBounds(145, 249, 185, 25);
 		panel.add(ArtisttextField);
-		
-		JLabel lblArtPrice = new JLabel("Art Price");
-		lblArtPrice.setFont(new Font("Trebuchet MS", Font.PLAIN, 14));
-		lblArtPrice.setBounds(27, 250, 92, 31);
-		panel.add(lblArtPrice);
-		
-		ArtPricetextField = new JTextField();
-		ArtPricetextField.setFont(new Font("Times New Roman", Font.PLAIN, 13));
-		ArtPricetextField.setColumns(10);
-		ArtPricetextField.setBounds(145, 249, 185, 25);
-		panel.add(ArtPricetextField);
 		
 		JLabel lblArtworksLabel = new JLabel("ARTWORKS");
 		lblArtworksLabel.setFont(new Font("Century Schoolbook", Font.PLAIN, 18));
@@ -227,7 +227,7 @@ public class Artworks extends JFrame {
 		
 		//Display data in table
 		String[] columnNames = {"Art Code", "Art Title", "Art Style", "Year of Making", 
-								"Artist ID", "Art Price"};
+								"Dimension", "Artist"};
 		DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
 		tableModel.addRow(columnNames);
 		ArtworksTemplate.readData(tableModel);
@@ -243,9 +243,8 @@ public class Artworks extends JFrame {
 				ArtworksValues artworks = new ArtworksValues();
 				
 				boolean isFilled = !ArtCodetextField.getText().equals("") && !ArtTitletextField.getText().equals("")
-									&& !YearOfMakingtextField.getText().equals("") && !ArtisttextField.getText().equals("")
-									&& !ArtPricetextField.getText().equals(""); //fields that needs to be filled out
-				
+									&& !YearOfMakingtextField.getText().equals("") && !ArtisttextField.getText().equals("");
+									//fields that needs to be filled out
 				try {
 					if(isFilled) {
 						
@@ -254,8 +253,8 @@ public class Artworks extends JFrame {
 						artworks.setArtTitle(ArtTitletextField.getText());
 						artworks.setArtStyle(ArtStyletextField.getText());
 						artworks.setYearOfMaking(YearOfMakingtextField.getText());
-						artworks.setArtistID(ArtisttextField.getText());
-						artworks.setArtPrice(Float.parseFloat(ArtPricetextField.getText()));
+						artworks.setDimension(DimensiontextField.getText());
+						artworks.setArtist(ArtisttextField.getText());
 						
 						JOptionPane.showMessageDialog(null, ArtworksTemplate.rowCheck(artworks));
 						tableModel.setRowCount(1);
@@ -280,12 +279,11 @@ public class Artworks extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-ArtworksValues artworkEdit = new ArtworksValues();
+				ArtworksValues artworkEdit = new ArtworksValues();
 				
-				boolean isFilled = !ArtCodetextField.getText().equals("") && !ArtTitletextField.getText().equals("")
-									&& !YearOfMakingtextField.getText().equals("") && !ArtisttextField.getText().equals("")
-									&& !ArtPricetextField.getText().equals(""); //fields that needs to be filled out
-				
+				boolean isFilled = !ArtCodetextField.getText().equals("") && !ArtTitletextField.getText().equals("") &&
+									!YearOfMakingtextField.getText().equals("") && !ArtisttextField.getText().equals(""); 
+									//fields that needs to be filled out
 				try {
 					if(isFilled) {
 						
@@ -294,8 +292,8 @@ ArtworksValues artworkEdit = new ArtworksValues();
 						artworkEdit.setArtTitle(ArtTitletextField.getText());
 						artworkEdit.setArtStyle(ArtStyletextField.getText());
 						artworkEdit.setYearOfMaking(YearOfMakingtextField.getText());
-						artworkEdit.setArtistID(ArtisttextField.getText());
-						artworkEdit.setArtPrice(Float.parseFloat(ArtPricetextField.getText()));
+						artworkEdit.setDimension(DimensiontextField.getText());
+						artworkEdit.setArtist(ArtisttextField.getText());
 						
 						ArtworksCRUD.Update(artworkEdit);
 						clear();
@@ -421,17 +419,19 @@ private void clear() {
 	ArtTitletextField.setText("");
 	ArtStyletextField.setText("");
 	YearOfMakingtextField.setText("");
+	DimensiontextField.setText("");
 	ArtisttextField.setText("");
-	ArtPricetextField.setText("");
-	}
+	
+}
 	
 	//In editing: SETTING text into TEXTFIELDs
-		public void setTexts(ArtworksValues artworks) {
-			ArtCodetextField.setText(artworks.getArtCode());
-			ArtTitletextField.setText(artworks.getArtTitle());
-			ArtStyletextField.setText(artworks.getArtStyle());
-			YearOfMakingtextField.setText(artworks.getYearOfMaking());
-			ArtisttextField.setText(artworks.getArtistID());
-			ArtPricetextField.setText(String.valueOf(artworks.getArtPrice()));
-		}
+public void setTexts(ArtworksValues artworks) {
+	ArtCodetextField.setText(artworks.getArtCode());
+	ArtTitletextField.setText(artworks.getArtTitle());
+	ArtStyletextField.setText(artworks.getArtStyle());
+	YearOfMakingtextField.setText(artworks.getYearOfMaking());
+	DimensiontextField.setText(artworks.getDimension());
+	ArtisttextField.setText(artworks.getArtist());
+	
+	}
 }

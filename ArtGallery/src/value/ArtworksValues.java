@@ -7,8 +7,8 @@ public class ArtworksValues {
 					art_title,
 					art_style,
 					year_of_making,
-					artist_id;
-	private Float 	art_price;
+					dimension,
+					artist;
 	
 	public void setArtCode(String ArtCode) {
 		art_code = ArtCode;
@@ -42,20 +42,19 @@ public class ArtworksValues {
 		return year_of_making;
 	}
 	
-	public void setArtistID(String ArtistID) {
-		artist_id = ArtistID;
+	public void setDimension(String Dimension) {
+		dimension = Dimension;
 	}
 	
-	public String getArtistID() {
-		return artist_id;
+	public String getDimension() {
+		return dimension;
 	}
 	
-	public void setArtPrice(Float ArtPrice) {
-		art_price = ArtPrice;
+	public void setArtist(String Artist) {
+		artist = Artist;
 	}
 	
-	public Float getArtPrice() {
-		return art_price;
+	public String getArtist() {
+		return artist;
 	}
-	
 }

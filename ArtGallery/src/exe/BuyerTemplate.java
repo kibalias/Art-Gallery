@@ -30,7 +30,9 @@ public class BuyerTemplate {
 						buyerVal.getBuyerAge(),
 						buyerVal.getBuyerGender(),
 						buyerVal.getBuyerAddress(),
-						buyerVal.getBuyerAffiliation(),
+						buyerVal.getBuyerCity(),
+						buyerVal.getBuyerState(),
+						buyerVal.getBuyerZIP(),
 						buyerVal.getBuyerContactNumber()
 				};
 			table.addRow(list);

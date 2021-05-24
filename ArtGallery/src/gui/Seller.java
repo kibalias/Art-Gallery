@@ -19,26 +19,26 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
 
-import CRUDStatements.BuyerCRUD;
-import exe.BuyerTemplate;
-import value.BuyerValues;
+import CRUDStatements.SellerCRUD;
+import exe.SellerTemplate;
+import value.SellerValues;
 import javax.swing.JRadioButton;
 import javax.swing.JCheckBox;
 
-public class Buyer extends JFrame {
+public class Seller extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField BuyerIDtextField;
-	private JTextField BuyerNametextField;
-	private JTextField BuyerAgetextField;
-	private JTextField BuyerAddresstextField;
+	private JTextField SellerIDtextField;
+	private JTextField SellerNametextField;
+	private JTextField SellerAgetextField;
+	private JTextField SellerAddresstextField;
 	private JTextField BuyerCitytextField;
 	private JTextField ContactNumbertextField;
-	private JTable Buyertable;
+	private JTable Sellertable;
 
-	BuyerCRUD buyerCRUD = new BuyerCRUD();
-	private JTextField BuyerZIPtextField;
-	private JTextField BuyerStatetextField;
+	SellerCRUD sellerCRUD = new SellerCRUD();
+	private JTextField SellerZIPtextField;
+	private JTextField SellerStatetextField;
 	/**
 	 * Launch the application.
 	 */
@@ -58,7 +58,7 @@ public class Buyer extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Buyer() {
+	public Seller() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 943, 500);
 		contentPane = new JPanel();
@@ -104,13 +104,13 @@ public class Buyer extends JFrame {
 		panelHolder.add(btnArtwork);
 		
 //Button to redirect to Artist GUI
-		JButton btnSeller = new JButton("Seller");
+		JButton btnSeller = new JButton("Buyer");
 		btnSeller.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
 				setVisible(false);
-				Seller frame = new Seller();
+				Buyer frame = new Buyer();
 				frame.setVisible(true);	
 			}
 		});
@@ -134,59 +134,59 @@ public class Buyer extends JFrame {
 		btnSales.setBounds(799, 69, 89, 23);
 		panelHolder.add(btnSales);
 		
-		JLabel lblBuyerID = new JLabel("Buyer ID");
-		lblBuyerID.setFont(new Font("Trebuchet MS", Font.PLAIN, 14));
-		lblBuyerID.setBounds(27, 18, 79, 31);
-		panel.add(lblBuyerID);
+		JLabel lblSellerID = new JLabel("Seller ID");
+		lblSellerID.setFont(new Font("Trebuchet MS", Font.PLAIN, 14));
+		lblSellerID.setBounds(27, 18, 79, 31);
+		panel.add(lblSellerID);
 		
-		BuyerIDtextField = new JTextField();
-		BuyerIDtextField.setFont(new Font("Times New Roman", Font.PLAIN, 13));
-		BuyerIDtextField.setBounds(145, 18, 185, 25);
-		panel.add(BuyerIDtextField);
-		BuyerIDtextField.setColumns(10);
+		SellerIDtextField = new JTextField();
+		SellerIDtextField.setFont(new Font("Times New Roman", Font.PLAIN, 13));
+		SellerIDtextField.setBounds(145, 18, 185, 25);
+		panel.add(SellerIDtextField);
+		SellerIDtextField.setColumns(10);
 		
-		JLabel lblBuyerName = new JLabel("Name");
-		lblBuyerName.setFont(new Font("Trebuchet MS", Font.PLAIN, 14));
-		lblBuyerName.setBounds(27, 54, 79, 31);
-		panel.add(lblBuyerName);
+		JLabel lblSellerName = new JLabel("Name");
+		lblSellerName.setFont(new Font("Trebuchet MS", Font.PLAIN, 14));
+		lblSellerName.setBounds(27, 54, 79, 31);
+		panel.add(lblSellerName);
 		
-		BuyerNametextField = new JTextField();
-		BuyerNametextField.setFont(new Font("Times New Roman", Font.PLAIN, 13));
-		BuyerNametextField.setBounds(145, 54, 185, 25);
-		panel.add(BuyerNametextField);
-		BuyerNametextField.setColumns(10);
+		SellerNametextField = new JTextField();
+		SellerNametextField.setFont(new Font("Times New Roman", Font.PLAIN, 13));
+		SellerNametextField.setBounds(145, 54, 185, 25);
+		panel.add(SellerNametextField);
+		SellerNametextField.setColumns(10);
 		
-		JLabel lblBuyerAge = new JLabel("Age");
-		lblBuyerAge.setFont(new Font("Trebuchet MS", Font.PLAIN, 14));
-		lblBuyerAge.setBounds(27, 90, 79, 31);
-		panel.add(lblBuyerAge);
+		JLabel lblSellerAge = new JLabel("Age");
+		lblSellerAge.setFont(new Font("Trebuchet MS", Font.PLAIN, 14));
+		lblSellerAge.setBounds(27, 90, 79, 31);
+		panel.add(lblSellerAge);
 		
-		BuyerAgetextField = new JTextField();
-		BuyerAgetextField.setFont(new Font("Times New Roman", Font.PLAIN, 13));
-		BuyerAgetextField.setColumns(10);
-		BuyerAgetextField.setBounds(145, 90, 185, 25);
-		panel.add(BuyerAgetextField);
+		SellerAgetextField = new JTextField();
+		SellerAgetextField.setFont(new Font("Times New Roman", Font.PLAIN, 13));
+		SellerAgetextField.setColumns(10);
+		SellerAgetextField.setBounds(145, 90, 185, 25);
+		panel.add(SellerAgetextField);
 		
-		JLabel lblBuyerGender = new JLabel("Gender");
-		lblBuyerGender.setFont(new Font("Trebuchet MS", Font.PLAIN, 14));
-		lblBuyerGender.setBounds(27, 126, 92, 31);
-		panel.add(lblBuyerGender);
+		JLabel lblSellerGender = new JLabel("Gender");
+		lblSellerGender.setFont(new Font("Trebuchet MS", Font.PLAIN, 14));
+		lblSellerGender.setBounds(27, 126, 92, 31);
+		panel.add(lblSellerGender);
 		
-		JLabel lblBuyerAddress = new JLabel("Address");
-		lblBuyerAddress.setFont(new Font("Trebuchet MS", Font.PLAIN, 14));
-		lblBuyerAddress.setBounds(27, 195, 92, 31);
-		panel.add(lblBuyerAddress);
+		JLabel lblSellerAddress = new JLabel("Address");
+		lblSellerAddress.setFont(new Font("Trebuchet MS", Font.PLAIN, 14));
+		lblSellerAddress.setBounds(27, 196, 92, 31);
+		panel.add(lblSellerAddress);
 		
-		BuyerAddresstextField = new JTextField();
-		BuyerAddresstextField.setFont(new Font("Times New Roman", Font.PLAIN, 13));
-		BuyerAddresstextField.setColumns(10);
-		BuyerAddresstextField.setBounds(145, 197, 185, 25);
-		panel.add(BuyerAddresstextField);
+		SellerAddresstextField = new JTextField();
+		SellerAddresstextField.setFont(new Font("Times New Roman", Font.PLAIN, 13));
+		SellerAddresstextField.setColumns(10);
+		SellerAddresstextField.setBounds(145, 198, 185, 25);
+		panel.add(SellerAddresstextField);
 		
-		JLabel lblBuyerCity = new JLabel("City");
-		lblBuyerCity.setFont(new Font("Trebuchet MS", Font.PLAIN, 14));
-		lblBuyerCity.setBounds(27, 236, 40, 31);
-		panel.add(lblBuyerCity);
+		JLabel lblSellerCity = new JLabel("City");
+		lblSellerCity.setFont(new Font("Trebuchet MS", Font.PLAIN, 14));
+		lblSellerCity.setBounds(27, 236, 40, 31);
+		panel.add(lblSellerCity);
 		
 		BuyerCitytextField = new JTextField();
 		BuyerCitytextField.setFont(new Font("Times New Roman", Font.PLAIN, 13));
@@ -194,32 +194,38 @@ public class Buyer extends JFrame {
 		BuyerCitytextField.setBounds(73, 234, 108, 25);
 		panel.add(BuyerCitytextField);
 		
-		JLabel lblBuyerContactNumber = new JLabel("Contact Number");
-		lblBuyerContactNumber.setFont(new Font("Trebuchet MS", Font.PLAIN, 14));
-		lblBuyerContactNumber.setBounds(27, 160, 108, 31);
-		panel.add(lblBuyerContactNumber);
+		JLabel lblSellerContactNumber = new JLabel("Contact Number");
+		lblSellerContactNumber.setFont(new Font("Trebuchet MS", Font.PLAIN, 14));
+		lblSellerContactNumber.setBounds(27, 160, 108, 31);
+		panel.add(lblSellerContactNumber);
+		
+		ContactNumbertextField = new JTextField();
+		ContactNumbertextField.setFont(new Font("Times New Roman", Font.PLAIN, 13));
+		ContactNumbertextField.setColumns(10);
+		ContactNumbertextField.setBounds(145, 162, 185, 25);
+		panel.add(ContactNumbertextField);
 		
 		JLabel lblZip = new JLabel("ZIP");
 		lblZip.setFont(new Font("Trebuchet MS", Font.PLAIN, 14));
 		lblZip.setBounds(191, 236, 27, 31);
 		panel.add(lblZip);
 		
-		BuyerZIPtextField = new JTextField();
-		BuyerZIPtextField.setFont(new Font("Times New Roman", Font.PLAIN, 13));
-		BuyerZIPtextField.setColumns(10);
-		BuyerZIPtextField.setBounds(222, 234, 108, 25);
-		panel.add(BuyerZIPtextField);
+		SellerZIPtextField = new JTextField();
+		SellerZIPtextField.setFont(new Font("Times New Roman", Font.PLAIN, 13));
+		SellerZIPtextField.setColumns(10);
+		SellerZIPtextField.setBounds(222, 234, 108, 25);
+		panel.add(SellerZIPtextField);
 		
-		BuyerStatetextField = new JTextField();
-		BuyerStatetextField.setFont(new Font("Times New Roman", Font.PLAIN, 13));
-		BuyerStatetextField.setColumns(10);
-		BuyerStatetextField.setBounds(73, 270, 257, 25);
-		panel.add(BuyerStatetextField);
+		SellerStatetextField = new JTextField();
+		SellerStatetextField.setFont(new Font("Times New Roman", Font.PLAIN, 13));
+		SellerStatetextField.setColumns(10);
+		SellerStatetextField.setBounds(73, 270, 257, 25);
+		panel.add(SellerStatetextField);
 		
-		JLabel lblBuyerState = new JLabel("State");
-		lblBuyerState.setBounds(27, 270, 40, 31);
-		panel.add(lblBuyerState);
-		lblBuyerState.setFont(new Font("Trebuchet MS", Font.PLAIN, 14));
+		JLabel lblSellerState = new JLabel("State");
+		lblSellerState.setBounds(27, 270, 40, 31);
+		panel.add(lblSellerState);
+		lblSellerState.setFont(new Font("Trebuchet MS", Font.PLAIN, 14));
 		
 		JRadioButton FemaleRadioButton = new JRadioButton("Female");
 		FemaleRadioButton.setBounds(146, 128, 85, 23);
@@ -229,46 +235,40 @@ public class Buyer extends JFrame {
 		MaleRadioButton.setBounds(243, 128, 85, 23);
 		panel.add(MaleRadioButton);
 		
-		ContactNumbertextField = new JTextField();
-		ContactNumbertextField.setBounds(145, 162, 185, 25);
-		panel.add(ContactNumbertextField);
-		ContactNumbertextField.setFont(new Font("Times New Roman", Font.PLAIN, 13));
-		ContactNumbertextField.setColumns(10);
-		
-		JLabel lblArtworksLabel = new JLabel("BUYERS");
-		lblArtworksLabel.setFont(new Font("Century Schoolbook", Font.PLAIN, 18));
-		lblArtworksLabel.setBounds(32, 71, 122, 21);
-		panelHolder.add(lblArtworksLabel);
+		JLabel lblSellerLabel = new JLabel("SELLERS");
+		lblSellerLabel.setFont(new Font("Century Schoolbook", Font.PLAIN, 18));
+		lblSellerLabel.setBounds(32, 71, 122, 21);
+		panelHolder.add(lblSellerLabel);
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBounds(435, 96, 453, 307);
 		panelHolder.add(panel_1);
 		panel_1.setLayout(new BorderLayout(0, 0));
 		
-		Buyertable = new JTable();
-		Buyertable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		Buyertable.setBackground(Color.WHITE);
-		Buyertable.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_1.add(Buyertable);
+		Sellertable = new JTable();
+		Sellertable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		Sellertable.setBackground(Color.WHITE);
+		Sellertable.setBorder(new LineBorder(new Color(0, 0, 0)));
+		panel_1.add(Sellertable);
 		
 		//Display data in table
 		String[] columnNames = {"Buyer ID", "Name", "Age", "Gender", 
 								"Address", "City", "State", "ZIP", "Contact Number"};
 		DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
 		tableModel.addRow(columnNames);
-		BuyerTemplate.readData(tableModel);
-		Buyertable.setModel(tableModel);
+		SellerTemplate.readData(tableModel);
+		Sellertable.setModel(tableModel);
 
 //Add Button
 		JButton btnAdd = new JButton("Add");
 		btnAdd.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				BuyerValues buyer = new BuyerValues();
+				SellerValues seller = new SellerValues();
 				
-				boolean isFilled = !BuyerIDtextField.getText().equals("") && !BuyerNametextField.getText().equals("")
-									&& !BuyerAddresstextField.getText().equals("") && !BuyerCitytextField.getText().equals("")
-									&& !BuyerStatetextField.getText().equals("") && !BuyerZIPtextField.getText().equals("")
+				boolean isFilled = !SellerIDtextField.getText().equals("") && !SellerNametextField.getText().equals("")
+									&& !SellerAddresstextField.getText().equals("") && !BuyerCitytextField.getText().equals("")
+									&& !SellerStatetextField.getText().equals("") && !SellerZIPtextField.getText().equals("")
 									&& !ContactNumbertextField.getText().equals(""); //fields that needs to be filled out
 				
 				int bool = FemaleRadioButton.isSelected() ? 1 : 0;
@@ -278,19 +278,19 @@ public class Buyer extends JFrame {
 					if(isFilled) {
 						
 					//setting the values
-						buyer.setBuyerId(BuyerIDtextField.getText());
-						buyer.setBuyerName(BuyerNametextField.getText());
-						buyer.setBuyerAge(BuyerAgetextField.getText());
-						buyer.setBuyerGender(BuyerGender);
-						buyer.setBuyerAddress(BuyerAddresstextField.getText());
-						buyer.setBuyerCity(BuyerCitytextField.getText());
-						buyer.setBuyerState(BuyerStatetextField.getText());
-						buyer.setBuyerZIP(BuyerZIPtextField.getText());
-						buyer.setBuyerContactNumber(ContactNumbertextField.getText());
+						seller.setSellerId(SellerIDtextField.getText());
+						seller.setSellerName(SellerNametextField.getText());
+						seller.setSellerAge(SellerAgetextField.getText());
+						seller.setSellerGender(BuyerGender);
+						seller.setSellerAddress(SellerAddresstextField.getText());
+						seller.setSellerCity(BuyerCitytextField.getText());
+						seller.setSellerState(SellerStatetextField.getText());
+						seller.setSellerZIP(SellerZIPtextField.getText());
+						seller.setSellerContactNumber(ContactNumbertextField.getText());
 						
-						JOptionPane.showMessageDialog(null, BuyerTemplate.rowCheck(buyer));
+						JOptionPane.showMessageDialog(null, SellerTemplate.rowCheck(seller));
 						setVisible(false);
-						Buyer frame = new Buyer();
+						Seller frame = new Seller();
 						frame.setVisible(true);
 					} else {
 						JOptionPane.showMessageDialog(null, "Not saved. Input Required Fields.");
@@ -310,11 +310,11 @@ public class Buyer extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-			BuyerValues buyerEdit = new BuyerValues();
+			SellerValues sellerEdit = new SellerValues();
 				
-			boolean isFilled = !BuyerIDtextField.getText().equals("") && !BuyerNametextField.getText().equals("")
-					&& !BuyerAddresstextField.getText().equals("") && !BuyerCitytextField.getText().equals("")
-					&& !BuyerStatetextField.getText().equals("") && !BuyerZIPtextField.getText().equals("")
+			boolean isFilled = !SellerIDtextField.getText().equals("") && !SellerNametextField.getText().equals("")
+					&& !SellerAddresstextField.getText().equals("") && !BuyerCitytextField.getText().equals("")
+					&& !SellerStatetextField.getText().equals("") && !SellerZIPtextField.getText().equals("")
 					&& !ContactNumbertextField.getText().equals(""); //fields that needs to be filled out
 					
 					int bool = FemaleRadioButton.isSelected() ? 1 : 0;
@@ -324,20 +324,20 @@ public class Buyer extends JFrame {
 					if(isFilled) {
 						
 					//setting the values
-						buyerEdit.setBuyerId(BuyerIDtextField.getText());
-						buyerEdit.setBuyerName(BuyerNametextField.getText());
-						buyerEdit.setBuyerAge(BuyerAgetextField.getText());
-						buyerEdit.setBuyerGender(BuyerGender);
-						buyerEdit.setBuyerAddress(BuyerAddresstextField.getText());
-						buyerEdit.setBuyerCity(BuyerCitytextField.getText());
-						buyerEdit.setBuyerState(BuyerStatetextField.getText());
-						buyerEdit.setBuyerZIP(BuyerZIPtextField.getText());
-						buyerEdit.setBuyerContactNumber(ContactNumbertextField.getText());
+						sellerEdit.setSellerId(SellerIDtextField.getText());
+						sellerEdit.setSellerName(SellerNametextField.getText());
+						sellerEdit.setSellerAge(SellerAgetextField.getText());
+						sellerEdit.setSellerGender(BuyerGender);
+						sellerEdit.setSellerAddress(SellerAddresstextField.getText());
+						sellerEdit.setSellerCity(BuyerCitytextField.getText());
+						sellerEdit.setSellerState(SellerStatetextField.getText());
+						sellerEdit.setSellerZIP(SellerZIPtextField.getText());
+						sellerEdit.setSellerContactNumber(ContactNumbertextField.getText());
 						
-						BuyerCRUD.Update(buyerEdit);
+						SellerCRUD.Update(sellerEdit);
 						setVisible(false);
 						
-						Buyer frame = new Buyer();
+						Seller frame = new Seller();
 						frame.setVisible(true);
 					} else {
 						JOptionPane.showMessageDialog(null, "Not saved. Input Required Fields.");
@@ -374,7 +374,7 @@ public class Buyer extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				btnSave.setVisible(true);
-				int rowIndex = Buyertable.getSelectedRow();
+				int rowIndex = Sellertable.getSelectedRow();
 				
 				if(rowIndex == -1) {
 					JOptionPane.showMessageDialog(
@@ -386,8 +386,8 @@ public class Buyer extends JFrame {
 				}
 				
 				String toEdit = tableModel.getValueAt(rowIndex, 0).toString();
-				BuyerValues buyer = buyerCRUD.buyerVal(toEdit);
-				setTexts(buyer);
+				SellerValues seller = sellerCRUD.sellerVal(toEdit);
+				setTexts(seller);
 				
 				btnAdd.setVisible(false);
 			}
@@ -402,7 +402,7 @@ public class Buyer extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-				int rowIndex = Buyertable.getSelectedRow();
+				int rowIndex = Sellertable.getSelectedRow();
 				
 				if(rowIndex == -1) {
 					JOptionPane.showMessageDialog(
@@ -416,8 +416,8 @@ public class Buyer extends JFrame {
 				
 				String toDelete = tableModel.getValueAt(rowIndex, 0).toString();
 				
-				buyerCRUD.Delete(toDelete);
-				Buyer frame = new Buyer();
+				sellerCRUD.Delete(toDelete);
+				Seller frame = new Seller();
 				frame.setVisible(true);
 				}
 				
@@ -444,15 +444,15 @@ public class Buyer extends JFrame {
 	}
 	
 	//In editing: SETTING text into TEXTFIELDs
-		public void setTexts(BuyerValues buyer) {
-			BuyerIDtextField.setText(buyer.getBuyerId());
-			BuyerNametextField.setText(buyer.getBuyerName());
-			BuyerAgetextField.setText(buyer.getBuyerAge());
-			BuyerAddresstextField.setText(buyer.getBuyerAddress());
-			BuyerCitytextField.setText(buyer.getBuyerCity());
-			BuyerStatetextField.setText(buyer.getBuyerState());
-			BuyerZIPtextField.setText(buyer.getBuyerZIP());
-			ContactNumbertextField.setText(buyer.getBuyerContactNumber());	
+		public void setTexts(SellerValues seller) {
+			SellerIDtextField.setText(seller.getSellerId());
+			SellerNametextField.setText(seller.getSellerName());
+			SellerAgetextField.setText(seller.getSellerAge());
+			SellerAddresstextField.setText(seller.getSellerAddress());
+			BuyerCitytextField.setText(seller.getSellerCity());
+			SellerStatetextField.setText(seller.getSellerState());
+			SellerZIPtextField.setText(seller.getSellerZIP());
+			ContactNumbertextField.setText(seller.getSellerContactNumber());	
 	}
 		
 		public String setGender(int bool) {

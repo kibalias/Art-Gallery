@@ -20,9 +20,8 @@ public class ArtworksCRUD {
 					art_title,
 					art_style,
 					year_of_making,
-					artist_id,
-					art_status;
-					art_price;
+					dimension,
+					artist
 	 */
 	
 //getByArtCode
@@ -38,8 +37,8 @@ public class ArtworksCRUD {
 				artworks.setArtTitle(ResultSetObject.getString("ArtTitle"));
 				artworks.setArtStyle(ResultSetObject.getString("ArtStyle"));
 				artworks.setYearOfMaking(ResultSetObject.getString("YearOfMaking"));
-				artworks.setArtistID(ResultSetObject.getString("ArtistID"));
-				artworks.setArtPrice(ResultSetObject.getFloat("ArtPrice"));
+				artworks.setDimension(ResultSetObject.getString("Dimension"));
+				artworks.setArtist(ResultSetObject.getString("Artist"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -63,8 +62,8 @@ public class ArtworksCRUD {
 				artworks.setArtTitle(ResultSetObject.getString("ArtTitle"));
 				artworks.setArtStyle(ResultSetObject.getString("ArtStyle"));
 				artworks.setYearOfMaking(ResultSetObject.getString("YearOfMaking"));
-				artworks.setArtistID(ResultSetObject.getString("ArtistID"));
-				artworks.setArtPrice(ResultSetObject.getFloat("ArtPrice"));
+				artworks.setDimension(ResultSetObject.getString("Dimension"));
+				artworks.setArtist(ResultSetObject.getString("Artist"));
 				
 				artList.add(artworks);
 			}
@@ -89,8 +88,8 @@ public class ArtworksCRUD {
 			InsStatement.setString(2, artwork.getArtTitle());
 			InsStatement.setString(3, artwork.getArtStyle());
 			InsStatement.setString(4, artwork.getYearOfMaking());
-			InsStatement.setString(5, artwork.getArtistID());
-			InsStatement.setFloat(6, artwork.getArtPrice());
+			InsStatement.setString(5, artwork.getDimension());
+			InsStatement.setString(6, artwork.getArtist());
 			
 			tableFill = InsStatement.executeUpdate();
 			
@@ -106,14 +105,15 @@ public class ArtworksCRUD {
 	public static void Update(ArtworksValues artwork) {
 		conn = DBConnection.getConnection();
 		try {
-			PreparedStatement UpdateStatement = conn.prepareStatement("UPDATE artworks SET ArtTitle = ?, ArtStyle = ?, YearOfMaking = ?, ArtistID = ?, ArtPrice = ? WHERE ArtCode = ?");
+			PreparedStatement UpdateStatement = conn.prepareStatement("UPDATE artworks SET ArtTitle = ?, ArtStyle = ?, YearOfMaking = ?, "
+																	+ "Dimension = ?, Artist = ? WHERE ArtCode = ?");
 			
 			UpdateStatement.setString(6, artwork.getArtCode());
 			UpdateStatement.setString(1, artwork.getArtTitle());
 			UpdateStatement.setString(2, artwork.getArtStyle());
 			UpdateStatement.setString(3, artwork.getYearOfMaking());
-			UpdateStatement.setString(4, artwork.getArtistID());
-			UpdateStatement.setFloat(5, artwork.getArtPrice());
+			UpdateStatement.setString(4, artwork.getDimension());
+			UpdateStatement.setString(5, artwork.getArtist());
 			
 			UpdateStatement.execute();
 			
@@ -155,8 +155,8 @@ public class ArtworksCRUD {
 					artworks.setArtTitle(rs.getString("ArtTitle"));
 					artworks.setArtStyle(rs.getString("ArtStyle"));
 					artworks.setYearOfMaking(rs.getString("YearOfMaking"));
-					artworks.setArtistID(rs.getString("ArtistID"));
-					artworks.setArtPrice(rs.getFloat("ArtPrice"));
+					artworks.setDimension(rs.getString("Dimension"));
+					artworks.setArtist(rs.getString("Artist"));
 					
 					artList.add(artworks);
 				//	System.out.println("Query: Found "+ rs.getString("ArtCode"));

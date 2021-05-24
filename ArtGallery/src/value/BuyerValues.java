@@ -8,7 +8,9 @@ public class BuyerValues {
 					buyer_age,
 					buyer_gender,
 					buyer_address,
-					buyer_affiliation,
+					buyer_city,
+					buyer_state,
+					buyer_zip,
 					buyer_contactnum;
 	
 	public void setBuyerId(String BuyerId) {
@@ -51,12 +53,28 @@ public class BuyerValues {
 		return buyer_address;
 	}
 	
-	public void setBuyerAffiliation(String BuyerAffiliation) {
-		 buyer_affiliation = BuyerAffiliation;
+	public void setBuyerCity(String BuyerCity) {
+		 buyer_city = BuyerCity;
 	}
 	
-	public String getBuyerAffiliation() {
-		return buyer_affiliation;
+	public String getBuyerCity() {
+		return buyer_city;
+	}
+	
+	public void setBuyerState(String BuyerState) {
+		 buyer_state = BuyerState;
+	}
+	
+	public String getBuyerState() {
+		return buyer_state;
+	}
+	
+	public void setBuyerZIP(String BuyerZIP) {
+		buyer_zip = BuyerZIP;
+	}
+	
+	public String getBuyerZIP() {
+		return buyer_zip;
 	}
 	
 	public void setBuyerContactNumber(String BuyerContactNumber) {
