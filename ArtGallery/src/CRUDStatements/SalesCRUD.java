@@ -62,7 +62,7 @@ public class SalesCRUD {
 				InsStatement.setString(2, sales.getSellerId());
 				InsStatement.setString(3, sales.getArtCode());
 				InsStatement.setFloat(4, sales.getAmount());
-				InsStatement.setDate(4, sales.getDateOfSale());
+				InsStatement.setDate(5, sales.getDateOfSale());
 				
 				tableFill = InsStatement.executeUpdate();
 				
