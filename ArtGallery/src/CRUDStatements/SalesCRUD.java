@@ -148,5 +148,20 @@ public class SalesCRUD {
 					e.printStackTrace();
 				}
 			}	
+	//Retrieve SELLER ID for Combo Box
+			public static void SellerIDComboBox(JComboBox combobox) {
+				conn =   DBConnection.getConnection();
+				try{
+					PreparedStatement SelectStatement = conn.prepareStatement("SELECT * FROM seller");  
+					ResultSetObject = SelectStatement.executeQuery();
+					while(ResultSetObject.next()) {
+						String seller_id = ResultSetObject.getString("SellerID");
+						combobox.addItem(seller_id);
+					}
+						
+				}catch(Exception e) {
+					e.printStackTrace();
+				}
+			}	
 }
 		
