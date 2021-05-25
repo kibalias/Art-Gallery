@@ -46,7 +46,7 @@ public class Seller extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Buyer frame = new Buyer();
+					Seller frame = new Seller();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -103,7 +103,7 @@ public class Seller extends JFrame {
 		btnArtwork.setBounds(601, 69, 89, 23);
 		panelHolder.add(btnArtwork);
 		
-//Button to redirect to Artist GUI
+//Button to redirect to Buyer GUI
 		JButton btnSeller = new JButton("Buyer");
 		btnSeller.addMouseListener(new MouseAdapter() {
 			@Override
@@ -118,7 +118,7 @@ public class Seller extends JFrame {
 		btnSeller.setBounds(701, 69, 89, 23);
 		panelHolder.add(btnSeller);
 		
-//Button to redirect to Buyer Cart GUI
+//Button to redirect to Sales GUI
 		JButton btnSales = new JButton("Sales");
 		btnSales.addMouseListener(new MouseAdapter() {
 			@Override
@@ -360,7 +360,7 @@ public class Seller extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				setVisible(false);
 				JOptionPane.showMessageDialog(null, "Sucessfully Discarded Changes.");
-				Buyer frame = new Buyer();
+				Seller frame = new Seller();
 				frame.setVisible(true);
 			}
 		});
