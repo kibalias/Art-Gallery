@@ -37,7 +37,7 @@ public class BuyerCRUD {
 				if(ResultSetObject.next()) {
 					buyer.setBuyerId(ResultSetObject.getString("BuyerID"));
 					buyer.setBuyerName(ResultSetObject.getString("BuyerName"));
-					buyer.setBuyerAge(ResultSetObject.getString("BuyerAge"));
+					buyer.setBuyerAge(ResultSetObject.getInt("BuyerAge"));
 					buyer.setBuyerGender(ResultSetObject.getString("BuyerGender"));
 					buyer.setBuyerAddress(ResultSetObject.getString("BuyerAddress"));
 					buyer.setBuyerCity(ResultSetObject.getString("BuyerCity"));
@@ -66,7 +66,7 @@ public class BuyerCRUD {
 					
 					buyer.setBuyerId(ResultSetObject.getString("BuyerID"));
 					buyer.setBuyerName(ResultSetObject.getString("BuyerName"));
-					buyer.setBuyerAge(ResultSetObject.getString("BuyerAge"));
+					buyer.setBuyerAge(ResultSetObject.getInt("BuyerAge"));
 					buyer.setBuyerGender(ResultSetObject.getString("BuyerGender"));
 					buyer.setBuyerAddress(ResultSetObject.getString("BuyerAddress"));
 					buyer.setBuyerCity(ResultSetObject.getString("BuyerCity"));
@@ -95,7 +95,7 @@ public class BuyerCRUD {
 				
 				InsStatement.setString(1, buyer.getBuyerId());
 				InsStatement.setString(2, buyer.getBuyerName());
-				InsStatement.setString(3, buyer.getBuyerAge());
+				InsStatement.setInt(3, buyer.getBuyerAge());
 				InsStatement.setString(4, buyer.getBuyerGender());
 				InsStatement.setString(5, buyer.getBuyerAddress());
 				InsStatement.setString(6, buyer.getBuyerCity());
@@ -123,7 +123,7 @@ public class BuyerCRUD {
 				
 				UpdateStatement.setString(9, buyer.getBuyerId());
 				UpdateStatement.setString(1, buyer.getBuyerName());
-				UpdateStatement.setString(2, buyer.getBuyerAge());
+				UpdateStatement.setInt(2, buyer.getBuyerAge());
 				UpdateStatement.setString(3, buyer.getBuyerGender());
 				UpdateStatement.setString(4, buyer.getBuyerAddress());
 				UpdateStatement.setString(5, buyer.getBuyerCity());

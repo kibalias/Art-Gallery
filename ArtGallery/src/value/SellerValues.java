@@ -5,13 +5,13 @@ package value;
 public class SellerValues {
 	private String seller_id,
 					seller_name,
-					seller_age,
 					seller_gender,
 					seller_address,
 					seller_city,
 					seller_state,
 					seller_zip,
 					seller_contactnum;
+	private Integer seller_age;
 	
 	public void setSellerId(String SellerId) {
 		 seller_id = SellerId;
@@ -29,11 +29,11 @@ public class SellerValues {
 		return seller_name;
 	}
 	
-	public void setSellerAge(String SellerAge) {
+	public void setSellerAge(Integer SellerAge) {
 		 seller_age = SellerAge;
 	}
 	
-	public String getSellerAge() {
+	public Integer getSellerAge() {
 		return seller_age;
 	}
 	

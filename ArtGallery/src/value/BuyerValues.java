@@ -5,13 +5,13 @@ package value;
 public class BuyerValues {
 	private String 	buyer_id,
 					buyer_name,
-					buyer_age,
 					buyer_gender,
 					buyer_address,
 					buyer_city,
 					buyer_state,
 					buyer_zip,
 					buyer_contactnum;
+	private Integer buyer_age;
 	
 	public void setBuyerId(String BuyerId) {
 		 buyer_id = BuyerId;
@@ -29,11 +29,11 @@ public class BuyerValues {
 		return buyer_name;
 	}
 	
-	public void setBuyerAge(String BuyerAge) {
+	public void setBuyerAge(Integer BuyerAge) {
 		 buyer_age = BuyerAge;
 	}
 	
-	public String getBuyerAge() {
+	public Integer getBuyerAge() {
 		return buyer_age;
 	}
 	

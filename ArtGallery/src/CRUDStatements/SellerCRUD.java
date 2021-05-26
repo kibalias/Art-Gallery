@@ -37,7 +37,7 @@ public class SellerCRUD {
 				if(ResultSetObject.next()) {
 					seller.setSellerId(ResultSetObject.getString("SellerID"));
 					seller.setSellerName(ResultSetObject.getString("SellerName"));
-					seller.setSellerAge(ResultSetObject.getString("SellerAge"));
+					seller.setSellerAge(ResultSetObject.getInt("SellerAge"));
 					seller.setSellerGender(ResultSetObject.getString("SellerGender"));
 					seller.setSellerAddress(ResultSetObject.getString("SellerAddress"));
 					seller.setSellerCity(ResultSetObject.getString("SellerCity"));
@@ -66,7 +66,7 @@ public class SellerCRUD {
 					
 					seller.setSellerId(ResultSetObject.getString("SellerID"));
 					seller.setSellerName(ResultSetObject.getString("SellerName"));
-					seller.setSellerAge(ResultSetObject.getString("SellerAge"));
+					seller.setSellerAge(ResultSetObject.getInt("SellerAge"));
 					seller.setSellerGender(ResultSetObject.getString("SellerGender"));
 					seller.setSellerAddress(ResultSetObject.getString("SellerAddress"));
 					seller.setSellerCity(ResultSetObject.getString("SellerCity"));
@@ -95,7 +95,7 @@ public class SellerCRUD {
 				
 				InsStatement.setString(1, seller.getSellerId());
 				InsStatement.setString(2, seller.getSellerName());
-				InsStatement.setString(3, seller.getSellerAge());
+				InsStatement.setInt(3, seller.getSellerAge());
 				InsStatement.setString(4, seller.getSellerGender());
 				InsStatement.setString(5, seller.getSellerAddress());
 				InsStatement.setString(6, seller.getSellerCity());
@@ -123,7 +123,7 @@ public class SellerCRUD {
 				
 				UpdateStatement.setString(9, seller.getSellerId());
 				UpdateStatement.setString(1, seller.getSellerName());
-				UpdateStatement.setString(2, seller.getSellerAge());
+				UpdateStatement.setInt(2, seller.getSellerAge());
 				UpdateStatement.setString(3, seller.getSellerGender());
 				UpdateStatement.setString(4, seller.getSellerAddress());
 				UpdateStatement.setString(5, seller.getSellerCity());

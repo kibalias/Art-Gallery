@@ -280,7 +280,7 @@ public class Buyer extends JFrame {
 					//setting the values
 						buyer.setBuyerId(BuyerIDtextField.getText());
 						buyer.setBuyerName(BuyerNametextField.getText());
-						buyer.setBuyerAge(BuyerAgetextField.getText());
+						buyer.setBuyerAge(Integer.parseInt(BuyerAgetextField.getText()));
 						buyer.setBuyerGender(BuyerGender);
 						buyer.setBuyerAddress(BuyerAddresstextField.getText());
 						buyer.setBuyerCity(BuyerCitytextField.getText());
@@ -326,7 +326,7 @@ public class Buyer extends JFrame {
 					//setting the values
 						buyerEdit.setBuyerId(BuyerIDtextField.getText());
 						buyerEdit.setBuyerName(BuyerNametextField.getText());
-						buyerEdit.setBuyerAge(BuyerAgetextField.getText());
+						buyerEdit.setBuyerAge(Integer.parseInt(BuyerAgetextField.getText()));
 						buyerEdit.setBuyerGender(BuyerGender);
 						buyerEdit.setBuyerAddress(BuyerAddresstextField.getText());
 						buyerEdit.setBuyerCity(BuyerCitytextField.getText());
@@ -447,7 +447,7 @@ public class Buyer extends JFrame {
 		public void setTexts(BuyerValues buyer) {
 			BuyerIDtextField.setText(buyer.getBuyerId());
 			BuyerNametextField.setText(buyer.getBuyerName());
-			BuyerAgetextField.setText(buyer.getBuyerAge());
+			BuyerAgetextField.setText(buyer.getBuyerAge().toString());
 			BuyerAddresstextField.setText(buyer.getBuyerAddress());
 			BuyerCitytextField.setText(buyer.getBuyerCity());
 			BuyerStatetextField.setText(buyer.getBuyerState());
