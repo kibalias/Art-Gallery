@@ -57,42 +57,27 @@ public class ArtHome extends JFrame {
 	 */
 	public ArtHome() {
 		setForeground(new Color(0, 0, 0));
-		setBackground(new Color(0, 0, 0));
+		setBackground(Color.WHITE);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(204, 204, 204));
+		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblLogInNewLabel = new JLabel("Log In");
-		lblLogInNewLabel.setBounds(306, 70, 47, 23);
-		lblLogInNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblLogInNewLabel.setBackground(Color.WHITE);
-		lblLogInNewLabel.setFont(new Font("Arial", Font.PLAIN, 17));
-		contentPane.add(lblLogInNewLabel);
-		
-		JButton btnAdminNewButton = new JButton("Admin");
-		btnAdminNewButton.setBounds(282, 144, 105, 29);
-		btnAdminNewButton.addActionListener(new ActionListener() {
+		JButton btnRegistryNewButton = new JButton("Registry");
+		btnRegistryNewButton.setBounds(282, 144, 119, 47);
+		btnRegistryNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnAdminNewButton.setForeground(new Color(102, 0, 0));
-		btnAdminNewButton.setBackground(new Color(255, 255, 255));
-		btnAdminNewButton.setFont(new Font("Times New Roman", Font.PLAIN, 18));
-		contentPane.add(btnAdminNewButton);
+		btnRegistryNewButton.setFont(new Font("Times New Roman", Font.PLAIN, 18));
+		contentPane.add(btnRegistryNewButton);
 		
-		JButton btnViewer = new JButton("Viewer");
-		btnViewer.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnViewer.setBounds(282, 104, 105, 29);
-		btnViewer.setForeground(new Color(102, 0, 0));
+		JButton btnViewer = new JButton("Logs");
+		btnViewer.setBounds(282, 91, 119, 42);
 		btnViewer.setFont(new Font("Times New Roman", Font.PLAIN, 18));
-		btnViewer.setBackground(Color.WHITE);
 		contentPane.add(btnViewer);
 		
 		JPanel Imgpanel = new JPanel();
@@ -122,15 +107,15 @@ public class ArtHome extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				setVisible(false);
-				Viewer frame = new Viewer();
+				Logs frame = new Logs();
 				frame.setVisible(true);
 			}
 		});
-		btnAdminNewButton.addMouseListener(new MouseAdapter() {
+		btnRegistryNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				setVisible(false);
-				AdminLogIn frame = new AdminLogIn();
+				Artworks frame = new Artworks();
 				frame.setVisible(true);
 				
 			}
