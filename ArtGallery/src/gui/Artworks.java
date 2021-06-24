@@ -95,7 +95,6 @@ public class Artworks extends JFrame {
 		
 //Button to redirect to Artist GUI	
 		JButton btnSeller = new JButton("Seller");
-		btnSeller.setBackground(new Color(192, 192, 192));
 		btnSeller.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -111,7 +110,6 @@ public class Artworks extends JFrame {
 		
 //Button to redirect to Buyer GUI
 		JButton btnBuyer = new JButton("Buyer");
-		btnBuyer.setBackground(new Color(192, 192, 192));
 		btnBuyer.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -127,7 +125,6 @@ public class Artworks extends JFrame {
 		
 //Button to redirect to Buyer Cart GUI
 		JButton btnSales = new JButton("Sales");
-		btnSales.setBackground(new Color(192, 192, 192));
 		btnSales.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
