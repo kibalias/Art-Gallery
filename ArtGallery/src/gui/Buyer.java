@@ -21,6 +21,7 @@ import javax.swing.table.DefaultTableModel;
 
 import CRUDStatements.BuyerCRUD;
 import exe.BuyerTemplate;
+import exe.SellerTemplate;
 import value.BuyerValues;
 import javax.swing.JRadioButton;
 import javax.swing.JCheckBox;
@@ -289,9 +290,9 @@ public class Buyer extends JFrame {
 						buyer.setBuyerContactNumber(ContactNumbertextField.getText());
 						
 						JOptionPane.showMessageDialog(null, BuyerTemplate.rowCheck(buyer));
-						setVisible(false);
-						Buyer frame = new Buyer();
-						frame.setVisible(true);
+						tableModel.setRowCount(1);
+						BuyerTemplate.readData(tableModel);
+						clear();
 					} else {
 						JOptionPane.showMessageDialog(null, "Not saved. Input Required Fields.");
 						}
@@ -335,15 +336,18 @@ public class Buyer extends JFrame {
 						buyerEdit.setBuyerContactNumber(ContactNumbertextField.getText());
 						
 						BuyerCRUD.Update(buyerEdit);
-						setVisible(false);
+						tableModel.setRowCount(1);
+						BuyerTemplate.readData(tableModel);
+						clear();
 						
-						Buyer frame = new Buyer();
-						frame.setVisible(true);
 					} else {
 						JOptionPane.showMessageDialog(null, "Not saved. Input Required Fields.");
 						}
 					} catch (Exception e1) {
 						e1.printStackTrace();
+					}finally {
+						btnSave.setVisible(false);
+						btnAdd.setVisible(true);
 					}
 				
 			}
@@ -358,10 +362,12 @@ public class Buyer extends JFrame {
 		btnDiscard.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				setVisible(false);
+				btnSave.setVisible(false);
 				JOptionPane.showMessageDialog(null, "Sucessfully Discarded Changes.");
-				Buyer frame = new Buyer();
-				frame.setVisible(true);
+				tableModel.setRowCount(1);
+				BuyerTemplate.readData(tableModel);
+				clear();
+				btnAdd.setVisible(true);
 			}
 		});
 		btnDiscard.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
@@ -417,8 +423,8 @@ public class Buyer extends JFrame {
 				String toDelete = tableModel.getValueAt(rowIndex, 0).toString();
 				
 				buyerCRUD.Delete(toDelete);
-				Buyer frame = new Buyer();
-				frame.setVisible(true);
+				tableModel.setRowCount(1);
+				BuyerTemplate.readData(tableModel);
 				}
 				
 			}
@@ -454,7 +460,16 @@ public class Buyer extends JFrame {
 			BuyerZIPtextField.setText(buyer.getBuyerZIP());
 			ContactNumbertextField.setText(buyer.getBuyerContactNumber());	
 	}
-		
+		public void clear() {
+			BuyerIDtextField.setText("");
+			BuyerNametextField.setText("");
+			BuyerAgetextField.setText("");
+			BuyerAddresstextField.setText("");
+			BuyerCitytextField.setText("");
+			BuyerStatetextField.setText("");
+			BuyerZIPtextField.setText("");
+			ContactNumbertextField.setText("");	
+		}
 		public String setGender(int bool) {
 			if(bool == 1) {
 				return "F";

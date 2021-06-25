@@ -343,6 +343,9 @@ public class Seller extends JFrame {
 						}
 					} catch (Exception e1) {
 						e1.printStackTrace();
+					}finally {
+						btnSave.setVisible(false);
+						btnAdd.setVisible(true);
 					}
 				
 			}
@@ -357,10 +360,12 @@ public class Seller extends JFrame {
 		btnDiscard.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				btnSave.setVisible(false);
 				JOptionPane.showMessageDialog(null, "Sucessfully Discarded Changes.");
 				tableModel.setRowCount(1);
 				SellerTemplate.readData(tableModel);
 				clear();
+				btnAdd.setVisible(true);
 			}
 		});
 		btnDiscard.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
