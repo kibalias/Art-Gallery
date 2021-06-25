@@ -256,6 +256,7 @@ public class Artworks extends JFrame {
 						JOptionPane.showMessageDialog(null, ArtworksTemplate.rowCheck(artworks));
 						tableModel.setRowCount(1);
 						temp.readData(tableModel);
+						clear();
 					} else {
 						JOptionPane.showMessageDialog(null, "Not saved. Input Required Fields.");
 						}

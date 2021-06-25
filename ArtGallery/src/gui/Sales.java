@@ -225,7 +225,8 @@ public class Sales extends JFrame {
 				
 				boolean isFilled = !art_code.equals("") && !art_code.equals("Select") 
 									&& !buyer_id.equals("") && !buyer_id.equals("Select") && 
-									!seller_id.equals("") && !seller_id.equals("Select"); //fields that needs to be filled out
+									!seller_id.equals("") && !seller_id.equals("Select")
+									&& !AmounttextField.getText().equals("") && !DatetextField.getText().equals(""); //fields that needs to be filled out
 				
 				try {
 					if(isFilled) {
