@@ -131,6 +131,11 @@ public class Viewer extends JFrame {
 				btnSearch.setBounds(128, 82, 80, 23);
 				searchPanel.add(btnSearch);
 				
+				JButton btnView = new JButton("View Image");
+				btnView.setBackground(Color.WHITE);
+				btnView.setBounds(563, 385, 102, 23);
+				contentPane.add(btnView);
+				
 				btnSearch.addMouseListener(new MouseAdapter() {
 					@Override
 					public void mouseClicked(MouseEvent e) {
