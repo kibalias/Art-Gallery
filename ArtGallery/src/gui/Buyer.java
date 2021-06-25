@@ -21,9 +21,11 @@ import javax.swing.table.DefaultTableModel;
 
 import CRUDStatements.BuyerCRUD;
 import exe.BuyerTemplate;
+import exe.SalesTemplate;
 import value.BuyerValues;
 import javax.swing.JRadioButton;
 import javax.swing.JCheckBox;
+import javax.swing.ButtonGroup;
 
 public class Buyer extends JFrame {
 
@@ -39,6 +41,7 @@ public class Buyer extends JFrame {
 	BuyerCRUD buyerCRUD = new BuyerCRUD();
 	private JTextField BuyerZIPtextField;
 	private JTextField BuyerStatetextField;
+	private final ButtonGroup buttonGroup = new ButtonGroup();
 	/**
 	 * Launch the application.
 	 */
@@ -222,10 +225,12 @@ public class Buyer extends JFrame {
 		lblBuyerState.setFont(new Font("Trebuchet MS", Font.PLAIN, 14));
 		
 		JRadioButton FemaleRadioButton = new JRadioButton("Female");
+		buttonGroup.add(FemaleRadioButton);
 		FemaleRadioButton.setBounds(146, 128, 85, 23);
 		panel.add(FemaleRadioButton);
 		
 		JRadioButton MaleRadioButton = new JRadioButton("Male");
+		buttonGroup.add(MaleRadioButton);
 		MaleRadioButton.setBounds(243, 128, 85, 23);
 		panel.add(MaleRadioButton);
 		
@@ -289,9 +294,8 @@ public class Buyer extends JFrame {
 						buyer.setBuyerContactNumber(ContactNumbertextField.getText());
 						
 						JOptionPane.showMessageDialog(null, BuyerTemplate.rowCheck(buyer));
-						setVisible(false);
-						Buyer frame = new Buyer();
-						frame.setVisible(true);
+						tableModel.setRowCount(1);
+						BuyerTemplate.readData(tableModel);
 					} else {
 						JOptionPane.showMessageDialog(null, "Not saved. Input Required Fields.");
 						}

@@ -20,10 +20,12 @@ import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
 
 import CRUDStatements.SellerCRUD;
+import exe.BuyerTemplate;
 import exe.SellerTemplate;
 import value.SellerValues;
 import javax.swing.JRadioButton;
 import javax.swing.JCheckBox;
+import javax.swing.ButtonGroup;
 
 public class Seller extends JFrame {
 
@@ -39,6 +41,7 @@ public class Seller extends JFrame {
 	SellerCRUD sellerCRUD = new SellerCRUD();
 	private JTextField SellerZIPtextField;
 	private JTextField SellerStatetextField;
+	private final ButtonGroup buttonGroup = new ButtonGroup();
 	/**
 	 * Launch the application.
 	 */
@@ -228,10 +231,12 @@ public class Seller extends JFrame {
 		lblSellerState.setFont(new Font("Trebuchet MS", Font.PLAIN, 14));
 		
 		JRadioButton FemaleRadioButton = new JRadioButton("Female");
+		buttonGroup.add(FemaleRadioButton);
 		FemaleRadioButton.setBounds(146, 128, 85, 23);
 		panel.add(FemaleRadioButton);
 		
 		JRadioButton MaleRadioButton = new JRadioButton("Male");
+		buttonGroup.add(MaleRadioButton);
 		MaleRadioButton.setBounds(243, 128, 85, 23);
 		panel.add(MaleRadioButton);
 		
@@ -289,9 +294,8 @@ public class Seller extends JFrame {
 						seller.setSellerContactNumber(ContactNumbertextField.getText());
 						
 						JOptionPane.showMessageDialog(null, SellerTemplate.rowCheck(seller));
-						setVisible(false);
-						Seller frame = new Seller();
-						frame.setVisible(true);
+						tableModel.setRowCount(1);
+						SellerTemplate.readData(tableModel);
 					} else {
 						JOptionPane.showMessageDialog(null, "Not saved. Input Required Fields.");
 						}

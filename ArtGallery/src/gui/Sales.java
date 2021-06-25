@@ -241,9 +241,9 @@ public class Sales extends JFrame {
 						sales.setDateOfSale(date);
 						
 						JOptionPane.showMessageDialog(null, SalesTemplate.rowCheck(sales));
-						setVisible(false);
-						Sales frame = new Sales();
-						frame.setVisible(true);
+						setVisible(true);
+						tableModel.setRowCount(1);
+						SalesTemplate.readData(tableModel);
 					} else {
 						JOptionPane.showMessageDialog(null, "Not saved. Input Required Fields.");
 						}
