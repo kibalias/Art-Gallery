@@ -252,7 +252,7 @@ public class Seller extends JFrame {
 		panel_1.add(Sellertable);
 		
 		//Display data in table
-		String[] columnNames = {"Buyer ID", "Name", "Age", "Gender", 
+		String[] columnNames = {"Seller ID", "Name", "Age", "Gender", 
 								"Address", "City", "State", "ZIP", "Contact Number"};
 		DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
 		tableModel.addRow(columnNames);
@@ -289,9 +289,9 @@ public class Seller extends JFrame {
 						seller.setSellerContactNumber(ContactNumbertextField.getText());
 						
 						JOptionPane.showMessageDialog(null, SellerTemplate.rowCheck(seller));
-						setVisible(false);
-						Seller frame = new Seller();
-						frame.setVisible(true);
+						tableModel.setRowCount(1);
+						SellerTemplate.readData(tableModel);
+						clear();
 					} else {
 						JOptionPane.showMessageDialog(null, "Not saved. Input Required Fields.");
 						}
@@ -335,10 +335,9 @@ public class Seller extends JFrame {
 						sellerEdit.setSellerContactNumber(ContactNumbertextField.getText());
 						
 						SellerCRUD.Update(sellerEdit);
-						setVisible(false);
+						tableModel.setRowCount(1);
+						SellerTemplate.readData(tableModel);
 						
-						Seller frame = new Seller();
-						frame.setVisible(true);
 					} else {
 						JOptionPane.showMessageDialog(null, "Not saved. Input Required Fields.");
 						}
@@ -358,10 +357,10 @@ public class Seller extends JFrame {
 		btnDiscard.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				setVisible(false);
 				JOptionPane.showMessageDialog(null, "Sucessfully Discarded Changes.");
-				Seller frame = new Seller();
-				frame.setVisible(true);
+				tableModel.setRowCount(1);
+				SellerTemplate.readData(tableModel);
+				clear();
 			}
 		});
 		btnDiscard.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
@@ -417,8 +416,8 @@ public class Seller extends JFrame {
 				String toDelete = tableModel.getValueAt(rowIndex, 0).toString();
 				
 				sellerCRUD.Delete(toDelete);
-				Seller frame = new Seller();
-				frame.setVisible(true);
+				tableModel.setRowCount(1);
+				SellerTemplate.readData(tableModel);
 				}
 				
 			}
@@ -462,6 +461,18 @@ public class Seller extends JFrame {
 			else {
 				return "M";
 			}
+			
+		}
+		
+		private void clear() {
+			SellerIDtextField.setText("");
+			SellerNametextField.setText("");
+			SellerAgetextField.setText("");
+			SellerAddresstextField.setText("");
+			BuyerCitytextField.setText("");
+			SellerStatetextField.setText("");
+			SellerZIPtextField.setText("");
+			ContactNumbertextField.setText("");
 			
 		}
 }
