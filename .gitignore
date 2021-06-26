@@ -11,14 +11,17 @@
 *.rar
 
 # Classpath and Project
-.classpath
-.project
+*.classpath
+*.project
 
 #Bin files
-/ArtGallery/bin/
+ArtGallery/bin/
 
 #Sql Connection
 DBConnection.java
 
 #Connection
-/ArtGallery/src/connection/
+ArtGallery/src/connection/
+
+#imgs
+/ArtGallery/src/img/
