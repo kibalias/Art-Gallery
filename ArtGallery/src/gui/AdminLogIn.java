@@ -18,6 +18,8 @@ import javax.swing.border.BevelBorder;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.UIManager;
+import java.awt.SystemColor;
 
 public class AdminLogIn extends JFrame {
 
@@ -99,6 +101,7 @@ public class AdminLogIn extends JFrame {
 		panel.add(passwordField);
 		
 		JButton btnLogIn = new JButton("Log In");
+		btnLogIn.setBackground(SystemColor.menu);
 		btnLogIn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
