@@ -31,6 +31,8 @@ import java.awt.Insets;
 import javax.swing.border.LineBorder;
 import javax.swing.JSeparator;
 import javax.swing.border.BevelBorder;
+import java.awt.SystemColor;
+import javax.swing.UIManager;
 
 public class ArtHome extends JFrame {
 
@@ -67,6 +69,8 @@ public class ArtHome extends JFrame {
 		contentPane.setLayout(null);
 		
 		JButton btnRegistryNewButton = new JButton("Registry");
+		btnRegistryNewButton.setForeground(new Color(139, 0, 0));
+		btnRegistryNewButton.setBackground(new Color(255, 255, 255));
 		btnRegistryNewButton.setBounds(282, 144, 119, 47);
 		btnRegistryNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -76,6 +80,9 @@ public class ArtHome extends JFrame {
 		contentPane.add(btnRegistryNewButton);
 		
 		JButton btnViewer = new JButton("Logs");
+		
+		btnViewer.setForeground(new Color(139, 0, 0));
+		btnViewer.setBackground(new Color(255, 255, 255));
 		btnViewer.setBounds(282, 91, 119, 42);
 		btnViewer.setFont(new Font("Times New Roman", Font.PLAIN, 18));
 		contentPane.add(btnViewer);
@@ -110,6 +117,7 @@ public class ArtHome extends JFrame {
 				Logs frame = new Logs();
 				frame.setVisible(true);
 			}
+		
 		});
 		btnRegistryNewButton.addMouseListener(new MouseAdapter() {
 			@Override

@@ -32,6 +32,7 @@ import exe.SalesTemplate;
 import value.ArtworksValues;
 import value.SalesValues;
 import javax.swing.JSeparator;
+import java.awt.SystemColor;
 
 public class Logs extends JFrame {
 
@@ -225,6 +226,7 @@ public class Logs extends JFrame {
 		
 		//More Details Button
 				JButton btnDetails = new JButton("More Details>>>");
+				btnDetails.setBackground(new Color(255, 250, 250));
 				btnDetails.addMouseListener(new MouseAdapter() {
 					@Override
 					public void mouseClicked(MouseEvent e) {

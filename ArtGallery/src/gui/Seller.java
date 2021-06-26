@@ -26,6 +26,7 @@ import value.SellerValues;
 import javax.swing.JRadioButton;
 import javax.swing.JCheckBox;
 import javax.swing.ButtonGroup;
+import java.awt.SystemColor;
 
 public class Seller extends JFrame {
 
@@ -93,6 +94,7 @@ public class Seller extends JFrame {
 		
 //Button to redirect to Artist GUI	
 		JButton btnArtwork = new JButton("Artwork");
+		btnArtwork.setBackground(SystemColor.menu);
 		btnArtwork.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -108,6 +110,7 @@ public class Seller extends JFrame {
 		
 //Button to redirect to Buyer GUI
 		JButton btnSeller = new JButton("Buyer");
+		btnSeller.setBackground(SystemColor.menu);
 		btnSeller.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -123,6 +126,7 @@ public class Seller extends JFrame {
 		
 //Button to redirect to Sales GUI
 		JButton btnSales = new JButton("Sales");
+		btnSales.setBackground(SystemColor.menu);
 		btnSales.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -266,6 +270,8 @@ public class Seller extends JFrame {
 
 //Add Button
 		JButton btnAdd = new JButton("Add");
+		btnAdd.setForeground(new Color(139, 0, 0));
+		btnAdd.setBackground(new Color(255, 250, 250));
 		btnAdd.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -312,6 +318,8 @@ public class Seller extends JFrame {
 		
 //Save Button
 		JButton btnSave = new JButton("Save");
+		btnSave.setBackground(new Color(255, 250, 250));
+		btnSave.setForeground(new Color(139, 0, 0));
 		btnSave.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -363,6 +371,8 @@ public class Seller extends JFrame {
 		
 //Discard Button
 		JButton btnDiscard = new JButton("Discard");
+		btnDiscard.setBackground(new Color(255, 250, 250));
+		btnDiscard.setForeground(new Color(139, 0, 0));
 		btnDiscard.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -380,6 +390,8 @@ public class Seller extends JFrame {
 		
 //Edit Button
 		JButton btnEdit = new JButton("Edit");
+		btnEdit.setForeground(new Color(139, 0, 0));
+		btnEdit.setBackground(new Color(255, 250, 250));
 		btnEdit.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -408,6 +420,8 @@ public class Seller extends JFrame {
 		
 //Delete Button
 		JButton btnDelete = new JButton("Delete");
+		btnDelete.setBackground(new Color(255, 250, 250));
+		btnDelete.setForeground(new Color(139, 0, 0));
 		btnDelete.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {

@@ -25,8 +25,10 @@ import javax.swing.SwingConstants;
 import javax.swing.JComboBox;
 
 import CRUDStatements.SalesCRUD;
+import exe.BuyerTemplate;
 import exe.SalesTemplate;
 import value.SalesValues;
+import java.awt.SystemColor;
 
 public class Sales extends JFrame {
 
@@ -88,6 +90,7 @@ public class Sales extends JFrame {
 		
 //Button to redirect to Artwork GUI	
 		JButton btnArtwork = new JButton("Artwork");
+		btnArtwork.setBackground(SystemColor.menu);
 		btnArtwork.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -103,6 +106,7 @@ public class Sales extends JFrame {
 		
 //Button to redirect to Artist GUI
 		JButton btnBuyer = new JButton("Buyer");
+		btnBuyer.setBackground(SystemColor.menu);
 		btnBuyer.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -118,6 +122,7 @@ public class Sales extends JFrame {
 		
 //Button to redirect to Buyer Cart GUI
 		JButton btnSeller = new JButton("Seller");
+		btnSeller.setBackground(SystemColor.menu);
 		btnSeller.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -134,45 +139,48 @@ public class Sales extends JFrame {
 		
 //ComboBoxes
 		JComboBox ArtCodecomboBox = new JComboBox();
+		ArtCodecomboBox.setBackground(new Color(255, 255, 255));
 		ArtCodecomboBox.setBounds(146, 142, 185, 32);
 		panel.add(ArtCodecomboBox);
 		ArtCodecomboBox.addItem("Select");
 		SalesCRUD.ArtCodeComboBox(ArtCodecomboBox);
 		
 		JComboBox BuyerIDcomboBox = new JComboBox();
+		BuyerIDcomboBox.setBackground(new Color(255, 255, 255));
 		BuyerIDcomboBox.setBounds(146, 43, 185, 32);
 		panel.add(BuyerIDcomboBox);
 		BuyerIDcomboBox.addItem("Select");
 		SalesCRUD.BuyerIDComboBox(BuyerIDcomboBox);
 		
 		JComboBox SellerIDcomboBox = new JComboBox();
+		SellerIDcomboBox.setBackground(new Color(255, 255, 255));
 		SellerIDcomboBox.setBounds(146, 92, 185, 32);
 		panel.add(SellerIDcomboBox);
 		SellerIDcomboBox.addItem("Select");
 		SalesCRUD.SellerIDComboBox(SellerIDcomboBox);
 		
 		JLabel lblBuyerId = new JLabel("Buyer ID");
-		lblBuyerId.setFont(new Font("Trebuchet MS", Font.PLAIN, 14));
-		lblBuyerId.setBounds(40, 48, 78, 23);
+		lblBuyerId.setFont(new Font("Constantia", Font.PLAIN, 16));
+		lblBuyerId.setBounds(40, 50, 78, 23);
 		panel.add(lblBuyerId);
 		
 		JLabel lblSellerId = new JLabel("Seller ID");
-		lblSellerId.setFont(new Font("Trebuchet MS", Font.PLAIN, 14));
+		lblSellerId.setFont(new Font("Constantia", Font.PLAIN, 16));
 		lblSellerId.setBounds(40, 102, 78, 23);
 		panel.add(lblSellerId);
 		
 		JLabel lblArtCode = new JLabel("Art Code");
-		lblArtCode.setFont(new Font("Trebuchet MS", Font.PLAIN, 14));
+		lblArtCode.setFont(new Font("Constantia", Font.PLAIN, 16));
 		lblArtCode.setBounds(40, 152, 78, 23);
 		panel.add(lblArtCode);
 		
 		JLabel lblAmount = new JLabel("Amount");
-		lblAmount.setFont(new Font("Trebuchet MS", Font.PLAIN, 14));
+		lblAmount.setFont(new Font("Constantia", Font.PLAIN, 16));
 		lblAmount.setBounds(40, 197, 78, 23);
 		panel.add(lblAmount);
 		
 		JLabel lblDate = new JLabel("Date");
-		lblDate.setFont(new Font("Trebuchet MS", Font.PLAIN, 14));
+		lblDate.setFont(new Font("Constantia", Font.PLAIN, 16));
 		lblDate.setBounds(40, 240, 78, 23);
 		panel.add(lblDate);
 		
@@ -214,6 +222,8 @@ public class Sales extends JFrame {
 
 //Add Button
 		JButton btnAdd = new JButton("Add");
+		btnAdd.setForeground(new Color(139, 0, 0));
+		btnAdd.setBackground(new Color(255, 250, 250));
 		btnAdd.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -260,13 +270,16 @@ public class Sales extends JFrame {
 		
 //Discard Button
 		JButton btnDiscard = new JButton("Discard");
+		btnDiscard.setBackground(new Color(255, 250, 250));
+		btnDiscard.setForeground(new Color(139, 0, 0));
 		btnDiscard.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				setVisible(false);
+				//setVisible(false);
 				JOptionPane.showMessageDialog(null, "Sucessfully Discarded Changes.");
-				Sales frame = new Sales();
-				frame.setVisible(true);
+				tableModel.setRowCount(1);
+				SalesTemplate.readData(tableModel);
+				clear();
 			}
 		});
 		btnDiscard.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
@@ -276,6 +289,8 @@ public class Sales extends JFrame {
 		
 //Delete Button
 		JButton btnDelete = new JButton("Delete");
+		btnDelete.setForeground(new Color(139, 0, 0));
+		btnDelete.setBackground(new Color(255, 250, 250));
 		btnDelete.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -295,8 +310,8 @@ public class Sales extends JFrame {
 				int toDelete = (int) tableModel.getValueAt(rowIndex, 0);
 				
 				salesCRUD.Delete(toDelete);
-				Sales frame = new Sales();
-				frame.setVisible(true);
+				tableModel.setRowCount(1);
+				SalesTemplate.readData(tableModel);
 				}
 				
 			}
@@ -319,5 +334,22 @@ public class Sales extends JFrame {
 		btnBackToMenu.setFont(new Font("Trebuchet MS", Font.PLAIN, 9));
 		btnBackToMenu.setBounds(25, 11, 96, 26);
 		panelHolder.add(btnBackToMenu);
+		
+	//clear txtfld onclick some weird addition
+		DatetextField.addMouseListener(new MouseAdapter() {
+			 @Override
+			public void mouseClicked(MouseEvent e) {
+				  DatetextField.setText("");
+			  }
+			});
 	}
+		
+	
+	
+	public void clear() {
+		AmounttextField.setText("");
+		DatetextField.setText("YYYY-MM-DD");
+		
+	};
+	
 }
