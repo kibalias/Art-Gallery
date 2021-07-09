@@ -214,7 +214,7 @@ public class Sales extends JFrame {
 		panel_1.add(Carttable);
 		
 		//Display data in table
-		String[] columnNames = {"id", "Buyer Id", "Sales Id", "Art Code", "Amount", "Date"};
+		String[] columnNames = {"id", "Buyer Id", "Seller Id", "Art Code", "Amount", "Date"};
 		DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
 		tableModel.addRow(columnNames);
 		SalesTemplate.readData(tableModel);
