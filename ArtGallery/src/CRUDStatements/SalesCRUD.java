@@ -28,7 +28,7 @@ public class SalesCRUD {
 			
 			try {
 				conn =   DBConnection.getConnection();
-				PreparedStatement SelectStatement = conn.prepareStatement("SELECT * FROM sales");  
+				PreparedStatement SelectStatement = conn.prepareStatement("SELECT * FROM sales ORDER BY DateOfSale");  
 				ResultSetObject = SelectStatement.executeQuery();
 				
 				while(ResultSetObject.next()) {
